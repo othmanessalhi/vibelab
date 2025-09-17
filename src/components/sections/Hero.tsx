@@ -24,8 +24,9 @@ export default function Hero() {
           src="/images/herocard.jpg"
           alt="Hero image"
           data-ai-hint="fashion model"
-          fill
-          className="w-full h-full object-cover rounded-2xl"
+          height={720}
+          width={1400}
+          className="mx-auto rounded-2xl object-cover h-full object-left-top"
           priority
         />
       </ContainerScroll>
