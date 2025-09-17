@@ -11,6 +11,9 @@ export default function Hero() {
     "Create Amazing Content",
     "Grow Your Brand",
     "Engage Your Audience",
+    "We See What's Next",
+    "Your Audience is Waiting",
+    "Stop Blending In",
     "Welcome to VibeLab",
   ];
 
@@ -22,6 +25,8 @@ export default function Hero() {
           <div className="h-24">
             <GooeyText
               texts={headlines}
+              morphTime={2}
+              cooldownTime={0.4}
               className="font-bold"
               textClassName="text-4xl md:text-[6rem] mt-1 leading-none"
             />
