@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { HTMLMotionProps, MotionConfig, motion } from "motion/react"
+import { HTMLMotionProps, MotionConfig, motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 interface TextStaggerHoverProps {
@@ -153,7 +153,7 @@ HoverSliderImageWrap.displayName = "HoverSliderImageWrap"
 
 export const HoverSliderImage = React.forwardRef<
   HTMLImageElement,
-  HTMLMotionProps<"img"> & HoverSliderImageProps
+  HTMLMotionProps & HoverSliderImageProps
 >(({ index, imageUrl, children, className, ...props }, ref) => {
   const { activeSlide } = useHoverSliderContext()
   return (
