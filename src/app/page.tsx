@@ -5,16 +5,20 @@ import CaseStudies from "@/components/sections/CaseStudies";
 import AITool from "@/components/sections/AITool";
 import CTA from "@/components/sections/CTA";
 import AnimateIn from "@/components/common/AnimateIn";
+import WhoAreWe from "@/components/sections/WhoAreWe";
 
 export default function Home() {
   return (
     <>
       <Hero />
       <div className="bg-background">
+        <WhoAreWe />
         <AnimateIn>
           <About />
         </AnimateIn>
-        <Services />
+        <AnimateIn>
+          <Services />
+        </AnimateIn>
         <AnimateIn>
           <CaseStudies />
         </AnimateIn>
