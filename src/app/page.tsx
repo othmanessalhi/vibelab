@@ -9,7 +9,9 @@ import ScrollExpansionHero from "@/components/sections/ScrollExpansionHero";
 export default function Home() {
   return (
     <>
-      <ScrollExpansionHero />
+      <div className="relative pt-[-5rem] -mt-20">
+        <ScrollExpansionHero />
+      </div>
       <AnimateIn>
         <About />
       </AnimateIn>
