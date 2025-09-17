@@ -104,12 +104,17 @@ export default {
             transform: 'translateX(-50%)',
           },
         },
+        'logo-glow': {
+          '0%, 100%': { opacity: '0.75', transform: 'scale(1)' },
+          '50%': { opacity: '1', transform: 'scale(1.1)' },
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'scroll-down': 'scroll-down 2s ease-in-out infinite',
         'scroll-right': 'scroll-right 40s linear infinite',
+        'logo-glow': 'logo-glow 4s ease-in-out infinite',
       },
     },
   },
