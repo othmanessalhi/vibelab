@@ -2,8 +2,12 @@
 import React from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { BackgroundPaths } from "@/components/ui/background-paths";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
+import Image from "next/image";
 
 export default function Hero() {
+  const heroImage = PlaceHolderImages.find(p => p.id === 'hero-image-fashion');
+
   return (
     <div className="flex flex-col overflow-hidden relative">
       <BackgroundPaths />
@@ -19,16 +23,15 @@ export default function Hero() {
           </>
         }
       >
-        <iframe
-          src="https://www.youtube.com/embed/JKPmNy5ObPM?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist=JKPmNy5ObPM&modestbranding=1"
-          width="100%"
-          height="100%"
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-          className="w-full h-full object-cover rounded-2xl"
-          title="VibeLab Hero Video"
-        ></iframe>
+        {heroImage && (
+          <Image
+            src={heroImage.imageUrl}
+            alt={heroImage.description}
+            data-ai-hint={heroImage.imageHint}
+            fill
+            className="w-full h-full object-cover rounded-2xl"
+          />
+        )}
       </ContainerScroll>
       <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </div>

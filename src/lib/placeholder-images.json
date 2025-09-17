@@ -47,6 +47,12 @@
       "description": "Underwater background",
       "imageUrl": "https://picsum.photos/seed/underwater-bg/1920/1080",
       "imageHint": "ocean reef"
+    },
+    {
+      "id": "hero-image-fashion",
+      "description": "A model in a black shaggy coat and leather pants walking on a wet surface.",
+      "imageUrl": "https://images.unsplash.com/photo-1698008988779-12093a380a47?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "fashion model"
     }
   ]
 }
