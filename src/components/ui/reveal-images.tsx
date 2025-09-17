@@ -83,7 +83,6 @@ function RevealImageList() {
   ];
   return (
     <div className="flex flex-col gap-1 rounded-sm bg-background p-4">
-      <h3 className="text-sm font-black uppercase text-muted-foreground">Our services</h3>
       {items.map((item, index) => (
         <RevealImageListItem key={index} text={item.text} images={item.images} />
       ))}
