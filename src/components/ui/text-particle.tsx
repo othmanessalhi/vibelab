@@ -98,11 +98,10 @@ export function TextParticle({
       ctx.clearRect(0, 0, canvas.width, canvas.height)
     }
     
-    const timeoutId = setTimeout(handleResize, 100);
+    handleResize()
     window.addEventListener("resize", handleResize)
     
     return () => {
-      clearTimeout(timeoutId);
       window.removeEventListener("resize", handleResize)
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
