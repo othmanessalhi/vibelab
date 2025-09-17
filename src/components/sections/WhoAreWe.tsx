@@ -1,23 +1,19 @@
 "use client";
 
 import { LinkPreview } from "@/components/ui/link-preview";
-import { TextParticle } from "@/components/ui/text-particle";
+import { PointerHighlight } from "@/components/ui/pointer-highlight";
 
 function WhoAreWeInternal() {
   return (
-    <div className="flex flex-col gap-1 rounded-sm bg-background px-8 py-4 items-center">
-      <div className="h-64 w-full max-w-4xl">
-        <TextParticle
-          text="Who are we?"
-          fontSize={100}
-          particleColor="hsl(var(--primary))"
-          particleSize={1}
-          particleDensity={5}
-          className="font-black"
-        />
-      </div>
-      <div className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto text-center mt-8">
-        We are a creative agency that loves building amazing things. Check out{" "}
+    <div className="flex flex-col gap-8 rounded-sm bg-background px-8 py-4 items-center">
+       <h2 className="text-3xl font-bold tracking-tight text-center md:text-5xl">
+          We are a creative agency that loves building
+          <PointerHighlight>
+            <span className="text-accent"> amazing things</span>
+          </PointerHighlight>
+        </h2>
+      <div className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto text-center">
+        Check out{" "}
         <LinkPreview
             url="https://google.com"
             className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-accent/70 to-accent"
