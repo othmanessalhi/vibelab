@@ -4,7 +4,6 @@ import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 import Image from "next/image";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function Hero() {
   const headlines = [
@@ -18,7 +17,11 @@ export default function Hero() {
     "VibeLab Sees What's Next."
   ];
 
-  const heroImage = PlaceHolderImages.find(p => p.id === 'hero-image-fashion');
+  const heroImage = {
+    imageUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "A serene and misty landscape with a river reflecting the sky, surrounded by trees.",
+    imageHint: "misty landscape"
+  };
 
   return (
     <div className="flex flex-col overflow-hidden relative">
