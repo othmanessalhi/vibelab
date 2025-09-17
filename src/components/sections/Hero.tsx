@@ -4,6 +4,7 @@ import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 import Image from "next/image";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function Hero() {
   const headlines = [
@@ -16,6 +17,8 @@ export default function Hero() {
     "Unlock Your True Potential.",
     "VibeLab Sees What's Next."
   ];
+
+  const heroImage = PlaceHolderImages.find(p => p.id === 'hero-image-fashion');
 
   return (
     <div className="flex flex-col overflow-hidden relative">
@@ -42,15 +45,17 @@ export default function Hero() {
           </div>
         }
       >
-        <Image
-          src="/images/herocard.jpg"
-          alt="Hero image"
-          data-ai-hint="fashion model"
-          height={720}
-          width={1400}
-          className="mx-auto rounded-2xl object-cover h-full object-left-top"
-          priority
-        />
+        {heroImage && (
+          <Image
+            src={heroImage.imageUrl}
+            alt={heroImage.description}
+            data-ai-hint={heroImage.imageHint}
+            height={720}
+            width={1400}
+            className="mx-auto rounded-2xl object-cover h-full object-left-top"
+            priority
+          />
+        )}
       </ContainerScroll>
       <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </div>
