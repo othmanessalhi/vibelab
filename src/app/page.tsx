@@ -1,5 +1,4 @@
 import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
 import CaseStudies from "@/components/sections/CaseStudies";
 import AITool from "@/components/sections/AITool";
 import CTA from "@/components/sections/CTA";
@@ -13,9 +12,6 @@ export default function Home() {
       <Hero />
       <div className="bg-background">
         <WhoAreWe />
-        <AnimateIn>
-          <About />
-        </AnimateIn>
         <AnimateIn>
           <Services />
         </AnimateIn>
