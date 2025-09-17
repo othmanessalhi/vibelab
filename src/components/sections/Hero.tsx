@@ -19,16 +19,14 @@ export default function Hero() {
 
   return (
     <div className="flex flex-col overflow-hidden relative">
-      <div className="absolute inset-0 -z-20">
-        <div
-          className="absolute inset-0 z-10"
-          style={{
-            mixBlendMode: "screen",
-            opacity: 0.5,
-            pointerEvents: "none",
-          }}
-        >
-        </div>
+      <div
+        className="absolute inset-0 z-20"
+        style={{
+          mixBlendMode: "screen",
+          opacity: 0.5,
+          pointerEvents: "none",
+        }}
+      >
       </div>
       <BackgroundPaths />
       <ContainerScroll
