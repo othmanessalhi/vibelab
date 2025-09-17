@@ -218,9 +218,9 @@ const ScrollExpandMedia = ({
                             ? mediaSrc +
                               (mediaSrc.includes('?') ? '&' : '?') +
                               'autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1'
-                            : mediaSrc.replace('/shorts/', '/embed/') +
+                            : mediaSrc.replace('/watch?v=', '/embed/') +
                               '?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1&playlist=' +
-                              mediaSrc.split('/shorts/')[1]
+                              mediaSrc.split('v=')[1]
                         }
                         className='w-full h-full rounded-xl'
                         frameBorder='0'
@@ -363,7 +363,7 @@ interface MediaContentCollection {
 const MediaContentDisplay = ({ mediaType }: { mediaType: 'video' | 'image' }) => {
   const sampleMediaContent: MediaContentCollection = {
     video: {
-      src: 'https://www.youtube.com/shorts/z6v0fXOIC_0',
+      src: 'https://www.youtube.com/watch?v=15urCMoUmHQ',
       poster: PlaceHolderImages.find(p => p.id === 'hero-video-poster')?.imageUrl,
       background: PlaceHolderImages.find(p => p.id === 'hero-video-bg')?.imageUrl,
       title: 'VibeLab Digital',
@@ -419,7 +419,7 @@ const ScrollExpansionHero = () => {
 
     const sampleMediaContent: MediaContentCollection = {
         video: {
-            src: 'https://www.youtube.com/shorts/z6v0fXOIC_0',
+            src: 'https://www.youtube.com/watch?v=15urCMoUmHQ',
             poster: heroVideoPoster?.imageUrl,
             background: heroVideoBg?.imageUrl,
             title: 'VibeLab Digital',
