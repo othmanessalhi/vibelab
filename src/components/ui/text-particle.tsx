@@ -37,7 +37,6 @@ export function TextParticle({
 }: TextParticleAnimationProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [particles, setParticles] = useState<Particle[]>([])
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
   const [mouse, setMouse] = useState({ x: null as number | null, y: null as number | null })
   const animationRef = useRef<number | null>(null)
 
@@ -48,15 +47,6 @@ export function TextParticle({
 
     const ctx = canvas.getContext("2d")
     if (!ctx) return
-
-    const handleResize = () => {
-      if (canvas.offsetWidth > 0 && canvas.offsetHeight > 0) {
-        canvas.width = canvas.offsetWidth
-        canvas.height = canvas.offsetHeight
-        setDimensions({ width: canvas.width, height: canvas.height })
-        initText()
-      }
-    }
 
     const initText = () => {
       if (!ctx || canvas.width === 0 || canvas.height === 0) return
@@ -96,6 +86,14 @@ export function TextParticle({
 
       setParticles(newParticles)
       ctx.clearRect(0, 0, canvas.width, canvas.height)
+    }
+    
+    const handleResize = () => {
+      if (canvas.offsetWidth > 0 && canvas.offsetHeight > 0) {
+        canvas.width = canvas.offsetWidth
+        canvas.height = canvas.offsetHeight
+        initText()
+      }
     }
     
     handleResize()
@@ -166,7 +164,7 @@ export function TextParticle({
     return () => {
       cancelAnimationFrame(rafId)
     }
-  }, [particles, mouse, backgroundColor, particleSize, particleColor])
+  }, [particles, mouse, backgroundColor, particleColor])
 
   // Mouse interaction
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
