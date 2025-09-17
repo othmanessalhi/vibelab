@@ -4,16 +4,29 @@ import Services from "@/components/sections/Services";
 import CaseStudies from "@/components/sections/CaseStudies";
 import AITool from "@/components/sections/AITool";
 import CTA from "@/components/sections/CTA";
+import AnimateIn from "@/components/common/AnimateIn";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <About />
-      <Services />
-      <CaseStudies />
-      <AITool />
-      <CTA />
+      <AnimateIn>
+        <Hero />
+      </AnimateIn>
+      <AnimateIn>
+        <About />
+      </AnimateIn>
+      <AnimateIn>
+        <Services />
+      </AnimateIn>
+      <AnimateIn>
+        <CaseStudies />
+      </AnimateIn>
+      <AnimateIn>
+        <AITool />
+      </AnimateIn>
+      <AnimateIn>
+        <CTA />
+      </AnimateIn>
     </>
   );
 }
