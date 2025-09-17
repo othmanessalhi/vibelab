@@ -96,11 +96,20 @@ export default {
           '50%': { transform: 'translateY(0)', opacity: '1' },
           '100%': { transform: 'translateY(10px)', opacity: '0' },
         },
+        'scroll-right': {
+          '0%': {
+            transform: 'translateX(0)',
+          },
+          '100%': {
+            transform: 'translateX(-50%)',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'scroll-down': 'scroll-down 2s ease-in-out infinite',
+        'scroll-right': 'scroll-right 40s linear infinite',
       },
     },
   },
