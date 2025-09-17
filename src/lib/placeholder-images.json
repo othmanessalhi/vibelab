@@ -32,9 +32,9 @@
     },
     {
       "id": "hero-video-bg",
-      "description": "Cosmic Journey Background",
-      "imageUrl": "https://picsum.photos/seed/cosmic-bg/1920/1080",
-      "imageHint": "galaxy stars"
+      "description": "Black gradient background",
+      "imageUrl": "https://picsum.photos/seed/black-gradient/1920/1080?grayscale&blur=10",
+      "imageHint": "black gradient"
     },
     {
       "id": "hero-image-main",

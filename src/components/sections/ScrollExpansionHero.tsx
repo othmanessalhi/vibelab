@@ -172,7 +172,7 @@ const ScrollExpandMedia = ({
       ref={sectionRef}
       className='transition-colors duration-700 ease-in-out overflow-x-hidden'
     >
-      <section className='relative flex flex-col items-center justify-start min-h-[100dvh]'>
+      <section className='relative flex flex-col items-center justify-center min-h-[100dvh]'>
         <div className='relative w-full flex flex-col items-center min-h-[100dvh]'>
           <motion.div
             className='absolute inset-0 z-0 h-full'
@@ -195,8 +195,8 @@ const ScrollExpandMedia = ({
             <div className='absolute inset-0 bg-black/10' />
           </motion.div>
 
-          <div className='container mx-auto flex flex-col items-center justify-start relative z-10'>
-            <div className='flex flex-col items-center justify-center w-full h-[100dvh] relative'>
+          <div className='container mx-auto flex flex-col items-center justify-center relative z-10 h-full'>
+            <div className='flex flex-col items-center justify-center w-full h-full relative'>
               <div
                 className='absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-none rounded-2xl'
                 style={{
@@ -208,32 +208,65 @@ const ScrollExpandMedia = ({
                 }}
               >
                 {mediaType === 'video' ? (
-                  <div className='relative w-full h-full pointer-events-none'>
-                    <video
-                      src={mediaSrc}
-                      poster={posterSrc}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload='auto'
-                      className='w-full h-full object-cover rounded-xl'
-                      controls={false}
-                      disablePictureInPicture
-                      disableRemotePlayback
-                    />
-                    <div
-                      className='absolute inset-0 z-10'
-                      style={{ pointerEvents: 'none' }}
-                    ></div>
+                  mediaSrc.includes('youtube.com') ? (
+                    <div className='relative w-full h-full pointer-events-none'>
+                      <iframe
+                        width='100%'
+                        height='100%'
+                        src={
+                          mediaSrc.includes('embed')
+                            ? mediaSrc +
+                              (mediaSrc.includes('?') ? '&' : '?') +
+                              'autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1'
+                            : mediaSrc.replace('/shorts/', '/embed/') +
+                              '?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1&playlist=' +
+                              mediaSrc.split('/shorts/')[1]
+                        }
+                        className='w-full h-full rounded-xl'
+                        frameBorder='0'
+                        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                        allowFullScreen
+                      />
+                      <div
+                        className='absolute inset-0 z-10'
+                        style={{ pointerEvents: 'none' }}
+                      ></div>
 
-                    <motion.div
-                      className='absolute inset-0 bg-black/30 rounded-xl'
-                      initial={{ opacity: 0.7 }}
-                      animate={{ opacity: 0.5 - scrollProgress * 0.3 }}
-                      transition={{ duration: 0.2 }}
-                    />
-                  </div>
+                      <motion.div
+                        className='absolute inset-0 bg-black/30 rounded-xl'
+                        initial={{ opacity: 0.7 }}
+                        animate={{ opacity: 0.5 - scrollProgress * 0.3 }}
+                        transition={{ duration: 0.2 }}
+                      />
+                    </div>
+                  ) : (
+                    <div className='relative w-full h-full pointer-events-none'>
+                      <video
+                        src={mediaSrc}
+                        poster={posterSrc}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload='auto'
+                        className='w-full h-full object-cover rounded-xl'
+                        controls={false}
+                        disablePictureInPicture
+                        disableRemotePlayback
+                      />
+                      <div
+                        className='absolute inset-0 z-10'
+                        style={{ pointerEvents: 'none' }}
+                      ></div>
+
+                      <motion.div
+                        className='absolute inset-0 bg-black/30 rounded-xl'
+                        initial={{ opacity: 0.7 }}
+                        animate={{ opacity: 0.5 - scrollProgress * 0.3 }}
+                        transition={{ duration: 0.2 }}
+                      />
+                    </div>
+                  )
                 ) : (
                   <div className='relative w-full h-full'>
                     <Image
@@ -330,7 +363,7 @@ interface MediaContentCollection {
 const MediaContentDisplay = ({ mediaType }: { mediaType: 'video' | 'image' }) => {
   const sampleMediaContent: MediaContentCollection = {
     video: {
-      src: 'https://me7aitdbxq.ufs.sh/f/2wsMIGDMQRdYuZ5R8ahEEZ4aQK56LizRdfBSqeDMsmUIrJN1',
+      src: 'https://www.youtube.com/shorts/z6v0fXOIC_0',
       poster: PlaceHolderImages.find(p => p.id === 'hero-video-poster')?.imageUrl,
       background: PlaceHolderImages.find(p => p.id === 'hero-video-bg')?.imageUrl,
       title: 'VibeLab Digital',
@@ -386,7 +419,7 @@ const ScrollExpansionHero = () => {
 
     const sampleMediaContent: MediaContentCollection = {
         video: {
-            src: 'https://me7aitdbxq.ufs.sh/f/2wsMIGDMQRdYuZ5R8ahEEZ4aQK56LizRdfBSqeDMsmUIrJN1',
+            src: 'https://www.youtube.com/shorts/z6v0fXOIC_0',
             poster: heroVideoPoster?.imageUrl,
             background: heroVideoBg?.imageUrl,
             title: 'VibeLab Digital',
