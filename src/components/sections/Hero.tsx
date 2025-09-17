@@ -3,21 +3,29 @@ import React from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 import Image from "next/image";
+import { GooeyText } from "@/components/ui/gooey-text-morphing";
 
 export default function Hero() {
+  const headlines = [
+    "Unleash Your Vibe",
+    "Create Amazing Content",
+    "Grow Your Brand",
+    "Engage Your Audience",
+    "Welcome to VibeLab",
+  ];
+
   return (
     <div className="flex flex-col overflow-hidden relative">
       <BackgroundPaths />
       <ContainerScroll
         titleComponent={
-          <>
-            <h1 className="text-4xl font-semibold text-foreground">
-              Unleash the power of <br />
-              <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
-                VibeLab
-              </span>
-            </h1>
-          </>
+          <div className="h-24">
+            <GooeyText
+              texts={headlines}
+              className="font-bold"
+              textClassName="text-4xl md:text-[6rem] mt-1 leading-none"
+            />
+          </div>
         }
       >
         <Image
