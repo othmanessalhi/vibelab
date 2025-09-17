@@ -10,21 +10,23 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <AnimateIn>
-        <About />
-      </AnimateIn>
-      <AnimateIn>
-        <Services />
-      </AnimateIn>
-      <AnimateIn>
-        <CaseStudies />
-      </AnimateIn>
-      <AnimateIn>
-        <AITool />
-      </AnimateIn>
-      <AnimateIn>
-        <CTA />
-      </AnimateIn>
+      <div className="bg-background">
+        <AnimateIn>
+          <About />
+        </AnimateIn>
+        <AnimateIn>
+          <Services />
+        </AnimateIn>
+        <AnimateIn>
+          <CaseStudies />
+        </AnimateIn>
+        <AnimateIn>
+          <AITool />
+        </AnimateIn>
+        <AnimateIn>
+          <CTA />
+        </AnimateIn>
+      </div>
     </>
   );
 }

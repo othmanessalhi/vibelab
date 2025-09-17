@@ -1,5 +1,6 @@
 import { Megaphone, Palette, Users, BarChart3 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { RevealImageList } from '../ui/reveal-images';
 
 const services = [
   {
@@ -28,6 +29,9 @@ export default function Services() {
   return (
     <section id="services" className="py-20 md:py-32 bg-secondary/20">
       <div className="container mx-auto px-4 md:px-6">
+        <div className="flex justify-center mb-12">
+            <RevealImageList />
+        </div>
         <div className="text-center mb-12">
           <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary tracking-tight">Our Services</h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-primary/70">
