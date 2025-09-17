@@ -29,7 +29,7 @@ export function TextParticle({
   text,
   fontSize = 80,
   fontFamily = "inherit",
-  particleSize = 2,
+  particleSize = 1,
   particleColor = "hsl(var(--primary))",
   particleDensity = 8,
   backgroundColor = "transparent",
