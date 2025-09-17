@@ -2,6 +2,7 @@
 
 import { User, Briefcase, Archive, Cpu, Home } from 'lucide-react';
 import { NavBar } from "@/components/ui/tubelight-navbar";
+import Link from 'next/link';
 
 export default function Header() {
   const navItems = [
@@ -12,5 +13,14 @@ export default function Header() {
     { name: 'AI Tool', url: '#ai-tool', icon: Cpu },
   ];
 
-  return <NavBar items={navItems} />;
+  return (
+    <>
+      <div className="fixed top-0 left-0 z-50 p-4">
+        <Link href="/" className="text-2xl font-bold font-headline text-primary tracking-tighter">
+          VL
+        </Link>
+      </div>
+      <NavBar items={navItems} />
+    </>
+  );
 }
