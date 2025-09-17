@@ -172,7 +172,7 @@ const ScrollExpandMedia = ({
       ref={sectionRef}
       className='transition-colors duration-700 ease-in-out overflow-x-hidden'
     >
-      <section className='relative flex flex-col items-center justify-center min-h-[100dvh] pt-20'>
+      <section className='relative flex flex-col items-center justify-center min-h-[100dvh]'>
         <div className='relative w-full flex flex-col items-center min-h-[calc(100dvh-5rem)]'>
           <motion.div
             className='absolute inset-0 z-0 h-full'
@@ -195,7 +195,7 @@ const ScrollExpandMedia = ({
             <div className='absolute inset-0 bg-black/10' />
           </motion.div>
 
-          <div className='container mx-auto flex flex-col items-center justify-center relative z-10 h-full'>
+          <div className='container mx-auto flex flex-col items-center justify-center relative z-10 h-full flex-grow'>
             <div className='flex flex-col items-center justify-center w-full h-full relative'>
               <div
                 className='absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-none rounded-2xl'
