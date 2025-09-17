@@ -8,7 +8,7 @@ export default function About() {
             <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary tracking-tight text-center mb-10 w-full">
                 About Us
             </h2>
-            <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto text-center">
+            <div className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto text-center">
             We are a creative agency that loves building amazing things. Check out{" "}
             <LinkPreview
                 url="https://google.com"
@@ -26,7 +26,7 @@ export default function About() {
                 Genkit
             </LinkPreview>
             .
-            </p>
+            </div>
         </div>
       </div>
     </section>
