@@ -61,7 +61,7 @@ const ScrollExpandMedia = ({
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
-    
+
     const handleWheel = (e: WheelEvent) => {
       if (mediaFullyExpanded && e.deltaY < 0 && window.scrollY <= 5) {
         setMediaFullyExpanded(false);
@@ -185,7 +185,7 @@ const ScrollExpandMedia = ({
           </motion.div>
 
           <div className='container mx-auto flex flex-col items-center justify-center relative z-10 h-full'>
-            <div className='flex flex-col items-center justify-center w-full h-full relative'>
+            <div className='flex flex-col items-center justify-center w-full h-full relative pt-20'>
               <div
                 className='absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-none rounded-2xl'
                 style={{
