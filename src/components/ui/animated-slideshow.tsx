@@ -158,7 +158,7 @@ export const HoverSliderImage = React.forwardRef<
   const { activeSlide } = useHoverSliderContext()
   return (
     <motion.img
-      className={cn("inline-block align-middle", className)}
+      className={cn("inline-block align-middle rounded-lg", className)}
       transition={{ ease: [0.33, 1, 0.68, 1], duration: 0.8 }}
       variants={clipPathVariants}
       animate={activeSlide === index ? "visible" : "hidden"}
