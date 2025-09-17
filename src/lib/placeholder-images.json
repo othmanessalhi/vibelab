@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "case-study-1",
+      "description": "Abstract background for a case study thumbnail",
+      "imageUrl": "https://picsum.photos/seed/cs1/600/400",
+      "imageHint": "abstract tech"
+    },
+    {
+      "id": "case-study-2",
+      "description": "Minimalist office space for a case study thumbnail",
+      "imageUrl": "https://picsum.photos/seed/cs2/600/400",
+      "imageHint": "minimalist office"
+    },
+    {
+      "id": "case-study-3",
+      "description": "Creative team collaborating",
+      "imageUrl": "https://picsum.photos/seed/cs3/600/400",
+      "imageHint": "team collaboration"
+    },
+    {
+      "id": "about-section",
+      "description": "Modern office interior for the about section",
+      "imageUrl": "https://picsum.photos/seed/about/1200/800",
+      "imageHint": "modern office"
+    }
+  ]
 }
