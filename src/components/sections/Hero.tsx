@@ -1,5 +1,7 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import ScrollIndicator from '@/components/common/ScrollIndicator';
+
 
 export default function Hero() {
   return (
@@ -23,6 +25,7 @@ export default function Hero() {
           </Button>
         </div>
       </div>
+      <ScrollIndicator />
     </section>
   );
 }
