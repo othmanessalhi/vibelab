@@ -23,6 +23,30 @@
       "description": "Modern office interior for the about section",
       "imageUrl": "https://picsum.photos/seed/about/1200/800",
       "imageHint": "modern office"
+    },
+    {
+      "id": "hero-video-poster",
+      "description": "Cosmic Journey Poster",
+      "imageUrl": "https://picsum.photos/seed/cosmic-poster/1920/1080",
+      "imageHint": "space cosmos"
+    },
+    {
+      "id": "hero-video-bg",
+      "description": "Cosmic Journey Background",
+      "imageUrl": "https://picsum.photos/seed/cosmic-bg/1920/1080",
+      "imageHint": "galaxy stars"
+    },
+    {
+      "id": "hero-image-main",
+      "description": "Underwater Adventure",
+      "imageUrl": "https://picsum.photos/seed/underwater-main/1280/720",
+      "imageHint": "underwater coral"
+    },
+    {
+      "id": "hero-image-bg",
+      "description": "Underwater background",
+      "imageUrl": "https://picsum.photos/seed/underwater-bg/1920/1080",
+      "imageHint": "ocean reef"
     }
   ]
 }
