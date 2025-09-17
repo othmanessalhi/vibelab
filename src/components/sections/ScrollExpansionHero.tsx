@@ -172,8 +172,8 @@ const ScrollExpandMedia = ({
       ref={sectionRef}
       className='transition-colors duration-700 ease-in-out overflow-x-hidden'
     >
-      <section className='relative flex flex-col items-center justify-center min-h-[100dvh]'>
-        <div className='relative w-full flex flex-col items-center min-h-[100dvh]'>
+      <section className='relative flex flex-col items-center justify-center min-h-[100dvh] pt-20'>
+        <div className='relative w-full flex flex-col items-center min-h-[calc(100dvh-5rem)]'>
           <motion.div
             className='absolute inset-0 z-0 h-full'
             initial={{ opacity: 0 }}
@@ -456,7 +456,7 @@ const ScrollExpansionHero = () => {
 
     return (
         <div className='min-h-screen bg-background'>
-            <div className='fixed top-4 right-4 z-50 flex gap-2'>
+            <div className='fixed top-24 right-4 z-50 flex gap-2'>
                 <button
                     onClick={() => setMediaType('video')}
                     className={`px-4 py-2 rounded-lg ${mediaType === 'video'
@@ -494,3 +494,5 @@ const ScrollExpansionHero = () => {
 };
 
 export default ScrollExpansionHero;
+
+    
