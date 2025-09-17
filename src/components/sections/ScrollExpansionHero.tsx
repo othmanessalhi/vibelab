@@ -198,8 +198,10 @@ const ScrollExpandMedia = ({
           <div className='container mx-auto flex flex-col items-center justify-center relative z-10 h-full flex-grow'>
             <div className='flex flex-col items-center justify-center w-full h-full relative'>
               <div
-                className='absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-none rounded-2xl'
+                className='absolute z-0 left-1/2 transform -translate-x-1/2 transition-none rounded-2xl'
                 style={{
+                  top: '80%',
+                  transform: 'translate(-50%, -50%)',
                   width: `${mediaWidth}px`,
                   height: `${mediaHeight}px`,
                   maxWidth: '95vw',
