@@ -7,18 +7,29 @@ import { GooeyText } from "@/components/ui/gooey-text-morphing";
 
 export default function Hero() {
   const headlines = [
-    "Unleash Your Vibe",
-    "Create Amazing Content",
-    "Grow Your Brand",
-    "Engage Your Audience",
-    "We See What's Next",
-    "Your Audience is Waiting",
-    "Stop Blending In",
-    "Welcome to VibeLab",
+    "Your Brand is Invisible.",
+    "Competitors Steal Your Clicks.",
+    "Your Story Goes Unheard.",
+    "Struggling to Keep Up?",
+    "Let's Change That.",
+    "The Attention You Deserve.",
+    "Unlock Your True Potential.",
+    "VibeLab Sees What's Next."
   ];
 
   return (
     <div className="flex flex-col overflow-hidden relative">
+      <div className="absolute inset-0 -z-20">
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            mixBlendMode: "screen",
+            opacity: 0.5,
+            pointerEvents: "none",
+          }}
+        >
+        </div>
+      </div>
       <BackgroundPaths />
       <ContainerScroll
         titleComponent={
