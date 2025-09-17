@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-import Image from "next/image";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 
 export default function Hero() {
@@ -20,14 +19,16 @@ export default function Hero() {
           </>
         }
       >
-        <Image
-          src="https://images.unsplash.com/photo-1444703686981-a3abbc4d42e2?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="hero"
-          height={720}
-          width={1400}
-          className="mx-auto rounded-2xl object-cover h-full object-left-top"
-          draggable={false}
-        />
+        <iframe
+          src="https://www.youtube.com/embed/JKPmNy5ObPM?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist=JKPmNy5ObPM"
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+          className="w-full h-full object-cover rounded-2xl"
+          title="VibeLab Hero Video"
+        ></iframe>
       </ContainerScroll>
       <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </div>
