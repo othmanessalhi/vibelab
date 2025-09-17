@@ -9,7 +9,9 @@ import AnimateIn from "@/components/common/AnimateIn";
 export default function Home() {
   return (
     <>
-      <Hero />
+      <div className="pt-20">
+        <Hero />
+      </div>
       <AnimateIn>
         <About />
       </AnimateIn>
