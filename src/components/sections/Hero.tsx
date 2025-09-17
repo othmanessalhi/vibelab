@@ -5,7 +5,7 @@ import ScrollIndicator from '@/components/common/ScrollIndicator';
 
 export default function Hero() {
   return (
-    <section className="relative bg-background py-32 sm:py-48 md:py-64 min-h-screen flex items-center justify-center">
+    <section className="relative bg-background min-h-screen flex flex-col items-center justify-center">
        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background"></div>
 
