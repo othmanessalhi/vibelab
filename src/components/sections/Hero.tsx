@@ -2,10 +2,12 @@
 import React from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import Image from "next/image";
+import { BackgroundPaths } from "@/components/ui/background-paths";
 
 export default function Hero() {
   return (
-    <div className="flex flex-col overflow-hidden">
+    <div className="flex flex-col overflow-hidden relative">
+      <BackgroundPaths />
       <ContainerScroll
         titleComponent={
           <>
