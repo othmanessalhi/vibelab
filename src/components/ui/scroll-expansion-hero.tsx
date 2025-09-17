@@ -186,9 +186,9 @@ const ScrollExpandMedia = ({
 
           <div className='container mx-auto flex flex-col items-center justify-center relative z-10 h-full'>
             <div className='flex flex-col items-center justify-center w-full h-full relative'>
-              <div className='absolute top-0 left-0 w-full h-full flex items-center justify-center'>
+              <div className="absolute inset-0 flex items-center justify-center">
                 <div
-                  className='relative z-0 transition-none rounded-2xl'
+                  className='relative transition-none rounded-2xl'
                   style={{
                     width: `${mediaWidth}px`,
                     height: `${mediaHeight}px`,
@@ -271,44 +271,44 @@ const ScrollExpandMedia = ({
                       />
                     </div>
                   )}
-                </div>
-              </div>
-              <div
-                className={`absolute inset-0 flex items-center justify-center text-center w-full z-10 transition-none flex-col ${
-                  textBlend ? 'mix-blend-difference' : 'mix-blend-normal'
-                }`}
-                >
-                <motion.h2
-                  className='text-6xl md:text-8xl font-bold text-blue-200 transition-none'
-                  style={{ transform: `translateX(-${textTranslateX}vw)` }}
-                >
-                  {firstWord}
-                </motion.h2>
-                <motion.h2
-                  className='text-6xl md:text-8xl font-bold text-center text-blue-200 transition-none'
-                  style={{ transform: `translateX(${textTranslateX}vw)` }}
-                >
-                  {restOfTitle}
-                </motion.h2>
-                <div className='absolute bottom-20 flex flex-col items-center text-center transition-none gap-2'>
-                    {date && (
-                        <motion.p
-                        className='text-lg text-blue-200'
-                        initial={{ opacity: 1 }}
-                        animate={{ opacity: 1 - scrollProgress * 2}}
-                        >
-                        {date}
-                        </motion.p>
-                    )}
-                    {scrollToExpand && (
-                        <motion.p
-                        className='text-sm text-blue-200 font-medium text-center tracking-widest uppercase'
-                        initial={{ opacity: 1 }}
-                        animate={{ opacity: 1 - scrollProgress * 2}}
-                        >
-                        {scrollToExpand}
-                        </motion.p>
-                    )}
+                  <div
+                    className={`absolute inset-0 flex items-center justify-center text-center w-full z-10 transition-none flex-col ${
+                      textBlend ? 'mix-blend-difference' : 'mix-blend-normal'
+                    }`}
+                    >
+                    <motion.h2
+                      className='text-6xl md:text-8xl font-bold text-blue-200 transition-none'
+                      style={{ transform: `translateX(-${textTranslateX}vw)` }}
+                    >
+                      {firstWord}
+                    </motion.h2>
+                    <motion.h2
+                      className='text-6xl md:text-8xl font-bold text-center text-blue-200 transition-none'
+                      style={{ transform: `translateX(${textTranslateX}vw)` }}
+                    >
+                      {restOfTitle}
+                    </motion.h2>
+                    <div className='absolute bottom-20 flex flex-col items-center text-center transition-none gap-2'>
+                        {date && (
+                            <motion.p
+                            className='text-lg text-blue-200'
+                            initial={{ opacity: 1 }}
+                            animate={{ opacity: 1 - scrollProgress * 2}}
+                            >
+                            {date}
+                            </motion.p>
+                        )}
+                        {scrollToExpand && (
+                            <motion.p
+                            className='text-sm text-blue-200 font-medium text-center tracking-widest uppercase'
+                            initial={{ opacity: 1 }}
+                            animate={{ opacity: 1 - scrollProgress * 2}}
+                            >
+                            {scrollToExpand}
+                            </motion.p>
+                        )}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
