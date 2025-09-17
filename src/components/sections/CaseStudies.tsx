@@ -26,11 +26,11 @@ export default function CaseStudies() {
   const images = PlaceHolderImages.filter(p => caseStudiesData.map(cs => cs.id).includes(p.id));
 
   return (
-    <section id="work" className="py-20 md:py-32 bg-card">
+    <section id="work" className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary tracking-tight">Our Work</h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-primary/80">
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-primary/70">
             A glimpse into the success stories we've helped write.
           </p>
         </div>
@@ -39,7 +39,7 @@ export default function CaseStudies() {
             const image = images.find(img => img.id === study.id);
             return (
               <Link href="#" key={study.id}>
-                <Card className="group overflow-hidden rounded-lg shadow-sm transition-shadow duration-300 hover:shadow-2xl">
+                <Card className="group overflow-hidden rounded-lg shadow-sm transition-shadow duration-300 hover:shadow-2xl bg-secondary/20 border-transparent hover:border-accent/30">
                   <div className="relative">
                     {image && (
                       <Image

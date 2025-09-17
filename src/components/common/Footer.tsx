@@ -14,13 +14,13 @@ export default function Footer() {
           </p>
           <div className="flex gap-4">
             <Link href="#" aria-label="Twitter">
-              <Twitter className="h-6 w-6 text-muted-foreground transition-colors hover:text-primary" />
+              <Twitter className="h-6 w-6 text-muted-foreground transition-colors hover:text-accent" />
             </Link>
             <Link href="#" aria-label="Instagram">
-              <Instagram className="h-6 w-6 text-muted-foreground transition-colors hover:text-primary" />
+              <Instagram className="h-6 w-6 text-muted-foreground transition-colors hover:text-accent" />
             </Link>
             <Link href="#" aria-label="LinkedIn">
-              <Linkedin className="h-6 w-6 text-muted-foreground transition-colors hover:text-primary" />
+              <Linkedin className="h-6 w-6 text-muted-foreground transition-colors hover:text-accent" />
             </Link>
           </div>
         </div>

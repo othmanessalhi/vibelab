@@ -38,19 +38,19 @@ export default function Header() {
         <Link href="/" className="text-2xl font-bold font-headline text-primary">
           VibeLab
         </Link>
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-primary/80 transition-colors hover:text-primary"
+              className="text-sm font-medium text-primary/80 transition-colors hover:text-primary hover:text-accent"
             >
               {link.label}
             </Link>
           ))}
         </nav>
         <div className="hidden md:block">
-          <Button asChild>
+          <Button asChild variant="outline">
             <Link href="#cta">Contact Us</Link>
           </Button>
         </div>

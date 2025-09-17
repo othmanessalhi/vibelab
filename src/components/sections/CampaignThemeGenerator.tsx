@@ -53,7 +53,7 @@ export default function CampaignThemeGenerator() {
   };
 
   return (
-    <Card className="shadow-lg">
+    <Card className="shadow-lg bg-background border-border">
       <CardContent className="p-6">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -75,7 +75,7 @@ export default function CampaignThemeGenerator() {
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={isLoading} className="w-full md:w-auto bg-accent hover:bg-accent/90">
+            <Button type="submit" disabled={isLoading} className="w-full md:w-auto">
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
