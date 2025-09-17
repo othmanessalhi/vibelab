@@ -20,7 +20,7 @@ export default function Hero() {
         }
       >
         <iframe
-          src="https://www.youtube.com/embed/JKPmNy5ObPM?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist=JKPmNy5ObPM"
+          src="https://www.youtube.com/embed/JKPmNy5ObPM?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist=JKPmNy5ObPM&modestbranding=1"
           width="100%"
           height="100%"
           frameBorder="0"
