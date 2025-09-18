@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import { GooeyText } from './gooey-text-morphing';
 
 // --- Data for each slide ---
 const slidesData = [
@@ -33,37 +34,64 @@ const slidesData = [
   },
 ];
 
-interface SlideProps {
+const serviceTitles = slidesData.map(slide => slide.title);
+
+interface SlideContentProps {
   index: number;
   slide: typeof slidesData[0];
   activeIndex: MotionValue<number>;
 }
 
-const SlideContent: React.FC<SlideProps> = ({ index, slide, activeIndex }) => {
-  const y = useTransform(activeIndex, val => (val - index) * 100 + '%');
-  const opacity = useTransform(activeIndex, val => (val === index ? 1 : 0));
+const SlideContent: React.FC<SlideContentProps> = ({ index, slide, activeIndex }) => {
+  const y = useTransform(activeIndex, [index - 1, index, index + 1], [100, 0, -100]);
+  const opacity = useTransform(activeIndex, [index - 0.5, index, index + 0.5], [0, 1, 0]);
 
   return (
     <motion.div
-      className="absolute inset-0"
-      style={{ y, opacity }}
+      className="absolute inset-0 flex flex-col justify-center"
+      style={{ y: y.get() + '%', opacity }}
       transition={{ duration: 0.5, ease: 'easeIn' }}
     >
-      <h2 className="text-5xl md:text-6xl font-bold tracking-tighter text-primary">{slide.title}</h2>
+        <div className="h-24">
+            <GooeyText
+                texts={serviceTitles}
+                morphTime={1.5}
+                cooldownTime={0.2}
+                className="font-bold"
+                textClassName="text-5xl md:text-6xl tracking-tighter text-primary"
+            />
+        </div>
       <p className="mt-6 text-lg md:text-xl max-w-md text-primary/80">{slide.description}</p>
+      <div className="mt-8">
+        <Button asChild size="lg">
+            <Link href="#cta">Get Started</Link>
+        </Button>
+      </div>
     </motion.div>
   );
+};
+
+
+interface SlideImageProps {
+  index: number;
+  slide: typeof slidesData[0];
+  activeIndex: MotionValue<number>;
 }
 
-const SlideImage: React.FC<SlideProps> = ({ index, slide, activeIndex }) => {
-  const y = useTransform(activeIndex, val => (val - index) * 100 + '%');
-  const opacity = useTransform(activeIndex, val => (val === index ? 1 : 0));
-  const scale = useTransform(activeIndex, val => (val === index ? 1 : 0.95));
+const SlideImage: React.FC<SlideImageProps> = ({ index, slide, activeIndex }) => {
+    const y = useTransform(activeIndex, [index - 1, index, index + 1], [100, 0, -100]);
+    const opacity = useTransform(activeIndex, [index - 0.5, index, index + 0.5], [0, 1, 0]);
+    const scale = useTransform(activeIndex, [index - 0.5, index, index + 0.5], [0.95, 1, 0.95]);
+
 
   return (
     <motion.div
       className="absolute inset-0 w-full h-full"
-      style={{ y, opacity, scale }}
+      style={{ 
+        y: y.get() + '%', 
+        opacity,
+        scale,
+      }}
       transition={{ duration: 0.5, ease: 'easeIn' }}
     >
       <img
@@ -92,7 +120,7 @@ export function ScrollingFeatureShowcase() {
   const sectionHeight = slidesData.length * 100;
 
   const activeIndex = useTransform(scrollYProgress, (pos) => {
-    return Math.floor(pos * slidesData.length);
+    return pos * (slidesData.length -1);
   });
 
   const gridPatternStyle = {
@@ -114,8 +142,8 @@ export function ScrollingFeatureShowcase() {
               {/* Pagination Bars */}
               <div className="absolute top-16 left-16 flex space-x-2">
                 {slidesData.map((_, index) => {
-                  const width = useTransform(activeIndex, val => (val === index ? '3rem' : '1.5rem'));
-                  const backgroundColor = useTransform(activeIndex, val => val === index ? 'hsl(var(--primary))' : 'hsl(var(--primary) / 0.2)');
+                  const width = useTransform(activeIndex, (val) => (Math.round(val) === index ? '3rem' : '1.5rem'));
+                  const backgroundColor = useTransform(activeIndex, (val) => Math.round(val) === index ? 'hsl(var(--primary))' : 'hsl(var(--primary) / 0.2)');
                   return (
                     <motion.div
                         key={index}
@@ -127,18 +155,12 @@ export function ScrollingFeatureShowcase() {
                 })}
               </div>
               
-              <div className="relative h-64 w-full overflow-hidden">
+              <div className="relative h-[30rem] w-full overflow-hidden">
                 {slidesData.map((slide, index) => (
                   <SlideContent key={index} index={index} slide={slide} activeIndex={activeIndex} />
                 ))}
               </div>
 
-              {/* Get Started Button */}
-              <div className="absolute bottom-16 left-16">
-                <Button asChild size="lg">
-                  <Link href="#cta">Get Started</Link>
-                </Button>
-              </div>
             </div>
 
             {/* Right Column: Image Content with Grid Background */}
