@@ -1,38 +1,25 @@
 
 "use client";
-import { FlowingMenu } from "@/components/ui/flowing-menu";
+import ImageReveal from "@/components/ui/image-reveal";
 import { servicesData } from "@/lib/services-data";
-import { useTheme } from "next-themes";
-import { useEffect } from "react";
 
 export default function ServicesPage() {
-  const { setTheme } = useTheme();
-
-  // The new component has its own light/dark mode styling which conflicts with the theme provider.
-  // We'll force the light theme on this page for consistent styling.
-  useEffect(() => {
-    setTheme("light");
-  }, [setTheme]);
-  
-  const menuItems = servicesData.map(service => ({
-    text: service.title,
-    image: service.image,
-    link: service.link,
+  const imagesForReveal = servicesData.map((service, index) => ({
+    id: index + 1,
+    src: service.image,
+    alt: service.title,
   }));
 
   return (
-    <div className="bg-background text-primary min-h-screen flex flex-col items-center justify-center">
-      <div className="text-center mb-12 px-4">
+    <div className="bg-background text-primary min-h-screen flex flex-col items-center justify-center py-20 px-4">
+      <div className="text-center mb-12">
         <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tight">Our Services</h1>
         <p className="mt-4 max-w-3xl mx-auto text-lg text-primary/70">
-          Hover over our services to see what we can do for you.
+          We offer a complete suite of services to elevate your brand. Hover over an item to see more.
         </p>
       </div>
-      <div
-        className="relative shadow-xl rounded-lg overflow-hidden mx-auto"
-        style={{ height: '600px', width: '100%', maxWidth: '450px' }}
-      >
-        <FlowingMenu items={menuItems} />
+      <div className="w-full max-w-5xl">
+        <ImageReveal images={imagesForReveal} />
       </div>
     </div>
   );
