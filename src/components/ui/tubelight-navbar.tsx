@@ -24,30 +24,30 @@ export function NavBar({ items, className }: NavBarProps) {
 
   useEffect(() => {
     items.forEach(item => {
-      if (item.url !== '#') {
-        const element = document.getElementById(item.url.substring(1));
+      const elementId = item.url.split('#')[1];
+      if (elementId) {
+        const element = document.getElementById(elementId);
         sectionsRef.current.set(item.name, element);
-      } else {
-        const homeElement = document.getElementById('home-hero'); // Assuming hero has an id 'home-hero'
-        if (homeElement) sectionsRef.current.set(item.name, homeElement);
-        else {
-            // Fallback for home section if no specific ID is present
-            const mainElement = document.querySelector('main');
-            if (mainElement) sectionsRef.current.set(item.name, mainElement.firstElementChild as HTMLElement);
-        }
       }
     });
 
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-      let currentSection = items[0].name;
+        const scrollPosition = window.scrollY + 150; // Add an offset
+        let currentSection = '';
 
-      for (const [name, element] of sectionsRef.current.entries()) {
-        if (element && element.offsetTop <= scrollPosition) {
-          currentSection = name;
+        for (const [name, element] of sectionsRef.current.entries()) {
+            if (element) {
+                const sectionTop = element.offsetTop;
+                const sectionHeight = element.offsetHeight;
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    currentSection = name;
+                    break; 
+                }
+            }
         }
-      }
-      setActiveTab(currentSection);
+        if (currentSection) {
+            setActiveTab(currentSection);
+        }
     };
 
     const handleResize = () => {
@@ -58,7 +58,7 @@ export function NavBar({ items, className }: NavBarProps) {
     handleScroll(); // Set initial active tab
 
     window.addEventListener("resize", handleResize)
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
     return () => {
       window.removeEventListener("resize", handleResize);
