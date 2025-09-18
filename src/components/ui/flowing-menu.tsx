@@ -86,7 +86,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
         className="
           flex items-center justify-center h-full relative cursor-pointer
           uppercase no-underline font-semibold
-          text-white
+          text-primary
           text-[4vh]
           hover:text-neutral-900
           focus:text-white
@@ -101,7 +101,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
       <div
         className="
           absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none
-          bg-white
+          bg-accent/10
           translate-y-[101%]"
         ref={marqueeRef}
       >
@@ -123,7 +123,7 @@ export const FlowingMenu: React.FC<FlowingMenuProps> = ({ items = [] }) => {
   return (
     <div className="
       w-full h-full overflow-hidden
-      bg-neutral-900
+      bg-background
       transition-colors duration-300
       "
     >
