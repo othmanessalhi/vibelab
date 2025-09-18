@@ -107,6 +107,14 @@ export default {
         'logo-glow': {
           '0%, 100%': { opacity: '0.75', transform: 'scale(1)' },
           '50%': { opacity: '1', transform: 'scale(1.1)' },
+        },
+        'marquee': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-100% - var(--gap)))' },
+        },
+        'marquee-vertical': {
+          from: { transform: 'translateY(0)' },
+          to: { transform: 'translateY(calc(-100% - var(--gap)))' },
         }
       },
       animation: {
@@ -115,6 +123,8 @@ export default {
         'scroll-down': 'scroll-down 2s ease-in-out infinite',
         'scroll-right': 'scroll-right 40s linear infinite',
         'logo-glow': 'logo-glow 4s ease-in-out infinite',
+        'marquee': 'marquee var(--duration) linear infinite',
+        'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
       },
     },
   },
