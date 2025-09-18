@@ -21,20 +21,18 @@ export default function ServicesPage() {
   }));
 
   return (
-    <div className="bg-background text-primary min-h-screen">
-      <div className="container mx-auto px-4 md:px-6 py-20 md:py-24">
-        <div className="text-center mb-16">
-          <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tight">Our Services</h1>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-primary/70">
-            Hover over our services to see what we can do for you.
-          </p>
-        </div>
-        <div
-          className="relative shadow-xl rounded-lg overflow-hidden mx-auto"
-          style={{ height: '70vh', width: '100%', maxWidth: '900px' }}
-        >
-          <FlowingMenu items={menuItems} />
-        </div>
+    <div className="bg-background text-primary min-h-screen flex flex-col items-center justify-center">
+      <div className="text-center mb-12 px-4">
+        <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tight">Our Services</h1>
+        <p className="mt-4 max-w-3xl mx-auto text-lg text-primary/70">
+          Hover over our services to see what we can do for you.
+        </p>
+      </div>
+      <div
+        className="relative shadow-xl rounded-lg overflow-hidden mx-auto"
+        style={{ height: '600px', width: '100%', maxWidth: '450px' }}
+      >
+        <FlowingMenu items={menuItems} />
       </div>
     </div>
   );
