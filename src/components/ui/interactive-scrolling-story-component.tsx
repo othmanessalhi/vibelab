@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { motion, useScroll, useTransform, MotionValue, useMotionValueEvent } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 
 // --- Data for each slide ---
 const slidesData = [
@@ -47,7 +47,7 @@ const SlideContent: React.FC<SlideContentProps> = ({ index, slide, activeIndex }
       className="absolute inset-0 flex flex-col justify-center"
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: isActive ? 0 : 100, opacity: isActive ? 1 : 0 }}
-      transition={{ duration: 0.5, ease: 'easeInOut' }}
+      transition={{ duration: isActive ? 0.5 : 0.2, ease: 'easeInOut', delay: isActive ? 0.1 : 0 }}
     >
       <h2 className="text-5xl md:text-6xl font-bold tracking-tighter text-primary">{slide.title}</h2>
       <p className="mt-6 text-lg md:text-xl max-w-md text-primary/80">{slide.description}</p>
@@ -75,7 +75,7 @@ const SlideImage: React.FC<SlideImageProps> = ({ index, slide, activeIndex }) =>
       className="absolute inset-0 w-full h-full"
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 0.95 }}
-      transition={{ duration: 0.5, ease: 'easeInOut' }}
+      transition={{ duration: isActive ? 0.5 : 0.2, ease: 'easeInOut', delay: isActive ? 0.1 : 0 }}
     >
       <img
         src={slide.image}
