@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 
 // --- Data for each slide ---
 const slidesData = [
@@ -33,6 +33,54 @@ const slidesData = [
   },
 ];
 
+interface SlideProps {
+  index: number;
+  slide: typeof slidesData[0];
+  activeIndex: MotionValue<number>;
+}
+
+const SlideContent: React.FC<SlideProps> = ({ index, slide, activeIndex }) => {
+  const y = useTransform(activeIndex, val => (val - index) * 100 + '%');
+  const opacity = useTransform(activeIndex, val => (val === index ? 1 : 0));
+
+  return (
+    <motion.div
+      className="absolute inset-0"
+      style={{ y, opacity }}
+      transition={{ duration: 0.5, ease: 'easeIn' }}
+    >
+      <h2 className="text-5xl md:text-6xl font-bold tracking-tighter text-primary">{slide.title}</h2>
+      <p className="mt-6 text-lg md:text-xl max-w-md text-primary/80">{slide.description}</p>
+    </motion.div>
+  );
+}
+
+const SlideImage: React.FC<SlideProps> = ({ index, slide, activeIndex }) => {
+  const y = useTransform(activeIndex, val => (val - index) * 100 + '%');
+  const opacity = useTransform(activeIndex, val => (val === index ? 1 : 0));
+  const scale = useTransform(activeIndex, val => (val === index ? 1 : 0.95));
+
+  return (
+    <motion.div
+      className="absolute inset-0 w-full h-full"
+      style={{ y, opacity, scale }}
+      transition={{ duration: 0.5, ease: 'easeIn' }}
+    >
+      <img
+        src={slide.image}
+        alt={slide.title}
+        className="h-full w-full object-cover"
+        onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+          const target = e.target as HTMLImageElement;
+          target.onerror = null;
+          target.src = `https://placehold.co/800x1200/e2e8f0/4a5568?text=Image+Not+Found`;
+        }}
+      />
+    </motion.div>
+  );
+}
+
+
 // --- Main App Component ---
 export function ScrollingFeatureShowcase() {
   const targetRef = React.useRef<HTMLDivElement>(null);
@@ -46,7 +94,7 @@ export function ScrollingFeatureShowcase() {
   const activeIndex = useTransform(scrollYProgress, (pos) => {
     return Math.floor(pos * slidesData.length);
   });
-  
+
   const gridPatternStyle = {
     '--grid-color': 'hsl(var(--border))',
     backgroundImage: `
@@ -65,33 +113,23 @@ export function ScrollingFeatureShowcase() {
             <div className="relative flex flex-col justify-center p-8 md:p-16 border-r border-border/50">
               {/* Pagination Bars */}
               <div className="absolute top-16 left-16 flex space-x-2">
-                {slidesData.map((_, index) => (
+                {slidesData.map((_, index) => {
+                  const width = useTransform(activeIndex, val => (val === index ? '3rem' : '1.5rem'));
+                  const backgroundColor = useTransform(activeIndex, val => val === index ? 'hsl(var(--primary))' : 'hsl(var(--primary) / 0.2)');
+                  return (
                     <motion.div
                         key={index}
                         className="h-1 rounded-full bg-primary/20"
-                        style={{
-                            width: useTransform(activeIndex, val => (val === index ? '3rem' : '1.5rem')),
-                            backgroundColor: useTransform(activeIndex, val => val === index ? 'hsl(var(--primary))' : 'hsl(var(--primary) / 0.2)'),
-                        }}
+                        style={{ width, backgroundColor }}
                         transition={{ duration: 0.5, ease: 'easeIn' }}
                     />
-                ))}
+                  )
+                })}
               </div>
               
               <div className="relative h-64 w-full overflow-hidden">
                 {slidesData.map((slide, index) => (
-                  <motion.div
-                    key={index}
-                    className="absolute inset-0"
-                    style={{
-                        y: useTransform(activeIndex, val => (val - index) * 100 + '%'),
-                        opacity: useTransform(activeIndex, val => val === index ? 1 : 0),
-                    }}
-                    transition={{ duration: 0.5, ease: 'easeIn' }}
-                  >
-                    <h2 className="text-5xl md:text-6xl font-bold tracking-tighter text-primary">{slide.title}</h2>
-                    <p className="mt-6 text-lg md:text-xl max-w-md text-primary/80">{slide.description}</p>
-                  </motion.div>
+                  <SlideContent key={index} index={index} slide={slide} activeIndex={activeIndex} />
                 ))}
               </div>
 
@@ -108,27 +146,7 @@ export function ScrollingFeatureShowcase() {
               <div className="relative w-[50%] h-[80vh] rounded-2xl overflow-hidden shadow-2xl border-4 border-border/10">
                 <div className="relative w-full h-full">
                   {slidesData.map((slide, index) => (
-                    <motion.div
-                      key={index}
-                      className="absolute inset-0 w-full h-full"
-                      style={{
-                        y: useTransform(activeIndex, val => (val - index) * 100 + '%'),
-                        opacity: useTransform(activeIndex, val => val === index ? 1 : 0),
-                        scale: useTransform(activeIndex, val => val === index ? 1 : 0.95),
-                      }}
-                      transition={{ duration: 0.5, ease: 'easeIn' }}
-                    >
-                      <img
-                        src={slide.image}
-                        alt={slide.title}
-                        className="h-full w-full object-cover"
-                        onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => { 
-                          const target = e.target as HTMLImageElement;
-                          target.onerror = null; 
-                          target.src = `https://placehold.co/800x1200/e2e8f0/4a5568?text=Image+Not+Found`; 
-                        }}
-                      />
-                    </motion.div>
+                    <SlideImage key={index} index={index} slide={slide} activeIndex={activeIndex} />
                   ))}
                 </div>
               </div>
