@@ -30,7 +30,7 @@ export default function Hero() {
         morphTime={2}
         cooldownTime={0.4}
         className="font-bold"
-        textClassName="text-4xl md:text-[6rem] mt-1 leading-none"
+        textClassName="text-4xl md:text-[6rem] mt-12 md:mt-1 leading-none"
       />
     </div>
   );
