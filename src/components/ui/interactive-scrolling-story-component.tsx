@@ -54,7 +54,7 @@ const SlideContent: React.FC<SlideContentProps> = ({ index, slide, activeIndex }
       <div className="overflow-hidden mt-8">
         <motion.div variants={contentChildVariants}>
             <Button asChild size="lg">
-                <Link href="/services">Learn More</Link>
+                <Link href="/#services">Learn More</Link>
             </Button>
         </motion.div>
       </div>
