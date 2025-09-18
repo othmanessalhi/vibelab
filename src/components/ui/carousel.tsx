@@ -150,6 +150,8 @@ export function Carousel({ slides }: CarouselProps) {
 
   const id = useId();
 
+  const showNext = current < slides.length - 1;
+
   return (
     <div
       className="relative w-full"
@@ -174,22 +176,19 @@ export function Carousel({ slides }: CarouselProps) {
         </ul>
       </div>
 
-
       <button
-        onClick={handlePreviousClick}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-background/50 backdrop-blur-sm text-primary transition-colors hover:bg-background"
-        aria-label="Go to previous slide"
+        onClick={showNext ? handleNextClick : handlePreviousClick}
+        className={`absolute top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-background/50 backdrop-blur-sm text-primary transition-all duration-300 hover:bg-background ${
+          showNext ? 'right-4' : 'left-4'
+        }`}
+        aria-label={showNext ? 'Go to next slide' : 'Go to previous slide'}
       >
-        <ChevronLeft className="h-6 w-6" />
+        {showNext ? (
+          <ChevronRight className="h-6 w-6" />
+        ) : (
+          <ChevronLeft className="h-6 w-6" />
+        )}
       </button>
-      <button
-        onClick={handleNextClick}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-background/50 backdrop-blur-sm text-primary transition-colors hover:bg-background"
-        aria-label="Go to next slide"
-      >
-        <ChevronRight className="h-6 w-6" />
-      </button>
-
     </div>
   );
 }
