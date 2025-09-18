@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import { motion, useScroll, useTransform, MotionValue, useMotionValueEvent } from 'framer-motion';
 
 // --- Data for each slide ---
 const slidesData = [
@@ -36,18 +36,18 @@ const slidesData = [
 interface SlideContentProps {
   index: number;
   slide: typeof slidesData[0];
-  activeIndex: MotionValue<number>;
+  activeIndex: number;
 }
 
 const SlideContent: React.FC<SlideContentProps> = ({ index, slide, activeIndex }) => {
-  const y = useTransform(activeIndex, [index - 1, index, index + 1], [100, 0, -100]);
-  const opacity = useTransform(activeIndex, [index - 0.5, index, index + 0.5], [0, 1, 0]);
+  const isActive = activeIndex === index;
 
   return (
     <motion.div
       className="absolute inset-0 flex flex-col justify-center"
-      style={{ y, opacity }}
-      transition={{ duration: 0.5, ease: 'easeIn' }}
+      initial={{ y: 100, opacity: 0 }}
+      animate={{ y: isActive ? 0 : 100, opacity: isActive ? 1 : 0 }}
+      transition={{ duration: 0.5, ease: 'easeInOut' }}
     >
       <h2 className="text-5xl md:text-6xl font-bold tracking-tighter text-primary">{slide.title}</h2>
       <p className="mt-6 text-lg md:text-xl max-w-md text-primary/80">{slide.description}</p>
@@ -64,24 +64,18 @@ const SlideContent: React.FC<SlideContentProps> = ({ index, slide, activeIndex }
 interface SlideImageProps {
   index: number;
   slide: typeof slidesData[0];
-  activeIndex: MotionValue<number>;
+  activeIndex: number;
 }
 
 const SlideImage: React.FC<SlideImageProps> = ({ index, slide, activeIndex }) => {
-    const y = useTransform(activeIndex, [index - 1, index, index + 1], [100, 0, -100]);
-    const opacity = useTransform(activeIndex, [index - 0.5, index, index + 0.5], [0, 1, 0]);
-    const scale = useTransform(activeIndex, [index - 0.5, index, index + 0.5], [0.95, 1, 0.95]);
-
+  const isActive = activeIndex === index;
 
   return (
     <motion.div
       className="absolute inset-0 w-full h-full"
-      style={{ 
-        y, 
-        opacity,
-        scale,
-      }}
-      transition={{ duration: 0.5, ease: 'easeIn' }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 0.95 }}
+      transition={{ duration: 0.5, ease: 'easeInOut' }}
     >
       <img
         src={slide.image}
@@ -101,16 +95,19 @@ const SlideImage: React.FC<SlideImageProps> = ({ index, slide, activeIndex }) =>
 // --- Main App Component ---
 export function ScrollingFeatureShowcase() {
   const targetRef = React.useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = React.useState(0);
+
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ['start start', 'end end'],
   });
 
-  const sectionHeight = slidesData.length * 100;
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const newActiveIndex = Math.round(latest * (slidesData.length - 1));
+    setActiveIndex(newActiveIndex);
+  })
 
-  const activeIndex = useTransform(scrollYProgress, (pos) => {
-    return pos * (slidesData.length -1);
-  });
+  const sectionHeight = slidesData.length * 100;
 
   const gridPatternStyle = {
     '--grid-color': 'hsl(var(--border))',
@@ -131,13 +128,14 @@ export function ScrollingFeatureShowcase() {
               {/* Pagination Bars */}
               <div className="absolute top-16 left-16 flex space-x-2">
                 {slidesData.map((_, index) => {
-                  const width = useTransform(activeIndex, (val) => (Math.round(val) === index ? '3rem' : '1.5rem'));
-                  const backgroundColor = useTransform(activeIndex, (val) => Math.round(val) === index ? 'hsl(var(--primary))' : 'hsl(var(--primary) / 0.2)');
                   return (
                     <motion.div
                         key={index}
-                        className="h-1 rounded-full bg-primary/20"
-                        style={{ width, backgroundColor }}
+                        className="h-1 rounded-full"
+                        animate={{
+                          width: activeIndex === index ? '3rem' : '1.5rem',
+                          backgroundColor: activeIndex === index ? 'hsl(var(--primary))' : 'hsl(var(--primary) / 0.2)',
+                        }}
                         transition={{ duration: 0.5, ease: 'easeIn' }}
                     />
                   )
