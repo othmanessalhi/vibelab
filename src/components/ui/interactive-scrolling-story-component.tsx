@@ -36,7 +36,7 @@ const SlideContent: React.FC<SlideContentProps> = ({ index, slide, activeIndex }
 
   return (
     <motion.div
-      className="absolute inset-0 flex flex-col justify-center"
+      className={`absolute inset-0 flex flex-col justify-center ${!isActive ? 'pointer-events-none' : ''}`}
       variants={contentParentVariants}
       initial="hidden"
       animate={isActive ? 'visible' : 'hidden'}
