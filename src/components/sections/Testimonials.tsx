@@ -108,35 +108,36 @@ export default function Testimonials() {
         <div
             className="flex flex-row items-center gap-4"
             style={{
-            transform:
+              transform:
                 'translateX(-100px) translateY(0px) translateZ(-100px) rotateX(20deg) rotateY(-10deg) rotateZ(20deg)',
+              transformStyle: 'preserve-3d',
             }}
         >
-            <Marquee vertical pauseOnHover repeat={3} className="[--duration:40s]">
+            <Marquee pauseOnHover vertical repeat={3} className="[--duration:40s]">
             {testimonials.map((review) => (
                 <TestimonialCard key={review.username} {...review} />
             ))}
             </Marquee>
-            <Marquee vertical pauseOnHover reverse repeat={3} className="[--duration:40s]">
+            <Marquee pauseOnHover vertical reverse repeat={3} className="[--duration:40s]">
             {testimonials.map((review) => (
                 <TestimonialCard key={review.username} {...review} />
             ))}
             </Marquee>
-            <Marquee vertical pauseOnHover repeat={3} className="[--duration:40s]">
+            <Marquee pauseOnHover vertical repeat={3} className="[--duration:40s]">
             {testimonials.map((review) => (
                 <TestimonialCard key={review.username} {...review} />
             ))}
             </Marquee>
-            <Marquee vertical pauseOnHover reverse repeat={3} className="[--duration:40s]">
+            <Marquee pauseOnHover vertical reverse repeat={3} className="[--duration:40s]">
             {testimonials.map((review) => (
                 <TestimonialCard key={review.username} {...review} />
             ))}
             </Marquee>
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-background"></div>
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background"></div>
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
         </div>
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-background"></div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background"></div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
         </div>
     </section>
   );
