@@ -40,16 +40,9 @@ export function ScrollingFeatureShowcase() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   // Ref to the sticky content panel
   const stickyPanelRef = useRef<HTMLDivElement>(null);
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   // --- Scroll Handler ---
   useEffect(() => {
-    if (!isClient) return;
-
     const container = scrollContainerRef.current;
     if (!container) return;
 
@@ -65,11 +58,7 @@ export function ScrollingFeatureShowcase() {
 
     container.addEventListener('scroll', handleScroll);
     return () => container.removeEventListener('scroll', handleScroll);
-  }, [isClient]);
-
-  if (!isClient) {
-    return null;
-  }
+  }, []);
   
   // Styles for the grid pattern on the right side
   const gridPatternStyle = {
