@@ -6,6 +6,7 @@ import AnimateIn from "@/components/common/AnimateIn";
 import WhoAreWe from "@/components/sections/WhoAreWe";
 import Services from "@/components/sections/Services";
 import Testimonials from "@/components/sections/Testimonials";
+import MovingText from "@/components/sections/MovingText";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <AnimateIn>
           <Testimonials />
         </AnimateIn>
+        <MovingText />
         <AnimateIn>
           <AITool />
         </AnimateIn>
