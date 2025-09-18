@@ -26,14 +26,29 @@ const Component = forwardRef<HTMLDivElement, ComponentProps>(({
   delay = 0,
 }, ref) => {
   const baseX = useMotionValue(0);
-  const directionFactor = useRef(baseVelocity > 0 ? -1 : 1);
-
-  useAnimationFrame((t, delta) => {
-    let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
-    baseX.set(baseX.get() + moveBy);
+  const { scrollY } = useScroll();
+  const scrollVelocity = useVelocity(scrollY);
+  const smoothVelocity = useSpring(scrollVelocity, {
+    damping: 50,
+    stiffness: 400,
+  });
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+    clamp: false,
   });
 
-  const x = useTransform(baseX, (v) => `${wrap(0, -25, v)}%`);
+  const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+
+  const directionFactor = useRef(1);
+  useAnimationFrame((t, delta) => {
+    let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
+
+    const vel = velocityFactor.get();
+    if (vel !== 0) {
+      directionFactor.current = vel > 0 ? 1 : -1;
+    }
+    moveBy += directionFactor.current * moveBy * vel;
+    baseX.set(baseX.get() + moveBy);
+  });
 
   return (
     <div ref={ref} className='overflow-hidden whitespace-nowrap flex flex-nowrap'>
