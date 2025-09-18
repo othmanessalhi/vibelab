@@ -18,7 +18,7 @@ export default function Header() {
   const navItems = [
     { name: 'Home', url: '/#home', icon: Home },
     { name: 'About', url: '/#about', icon: User },
-    { name: 'Services', url: '/#services', icon: Briefcase },
+    { name: 'Services', url: '/services', icon: Briefcase },
     { name: 'Work', url: '/#work', icon: Archive },
     { name: 'Testimonials', url: '/#testimonials', icon: Quote },
     { name: 'AI Tool', url: '/#ai-tool', icon: Cpu },

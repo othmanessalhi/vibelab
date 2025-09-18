@@ -3,35 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
-
-// --- Data for each slide ---
-const slidesData = [
-  {
-    title: "Social Media Management",
-    description: "We craft and execute bespoke social media strategies that build authentic connections, foster engagement, and grow your brand's community.",
-    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=2574&auto=format&fit=crop",
-  },
-  {
-    title: "Paid Advertising",
-    description: "Harness the power of data-driven paid advertising campaigns across all major platforms to maximize your reach, conversions, and ROI.",
-    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2612&auto=format&fit=crop",
-  },
-  {
-    title: "Drone Videography",
-    description: "Capture breathtaking aerial perspectives and cinematic footage that will elevate your brand's storytelling and leave a lasting impression.",
-    image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?q=80&w=2680&auto=format&fit=crop",
-  },
-  {
-    title: "Website Design",
-    description: "We design and build beautiful, responsive, and user-centric websites that not only look stunning but are also optimized for performance and conversions.",
-    image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2670&auto=format&fit=crop",
-  },
-  {
-    title: "Video Production",
-    description: "From concept to final cut, our team produces high-quality video content that tells your story, engages your audience, and drives results.",
-    image: "https://images.unsplash.com/photo-1574717025058-2f8737d2e2b7?q=80&w=2487&auto=format&fit=crop",
-  },
-];
+import { servicesData } from '@/lib/services-data';
 
 const contentParentVariants = {
   hidden: { opacity: 0 },
@@ -55,7 +27,7 @@ const contentChildVariants = {
 
 interface SlideContentProps {
   index: number;
-  slide: typeof slidesData[0];
+  slide: typeof servicesData[0];
   activeIndex: number;
 }
 
@@ -82,7 +54,7 @@ const SlideContent: React.FC<SlideContentProps> = ({ index, slide, activeIndex }
       <div className="overflow-hidden mt-8">
         <motion.div variants={contentChildVariants}>
             <Button asChild size="lg">
-                <Link href="#cta">Get Started</Link>
+                <Link href="/services">Learn More</Link>
             </Button>
         </motion.div>
       </div>
@@ -93,7 +65,7 @@ const SlideContent: React.FC<SlideContentProps> = ({ index, slide, activeIndex }
 
 interface SlideImageProps {
   index: number;
-  slide: typeof slidesData[0];
+  slide: typeof servicesData[0];
   activeIndex: number;
 }
 
@@ -133,11 +105,11 @@ export function ScrollingFeatureShowcase() {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const newActiveIndex = Math.round(latest * (slidesData.length - 1));
+    const newActiveIndex = Math.round(latest * (servicesData.length - 1));
     setActiveIndex(newActiveIndex);
   })
 
-  const sectionHeight = slidesData.length * 80;
+  const sectionHeight = servicesData.length * 80;
 
   const gridPatternStyle = {
     '--grid-color': 'hsl(var(--border))',
@@ -157,7 +129,7 @@ export function ScrollingFeatureShowcase() {
             <div className="relative flex flex-col justify-center p-8 md:p-16 border-r border-border/50">
               {/* Pagination Bars */}
               <div className="absolute top-16 left-16 flex space-x-2">
-                {slidesData.map((_, index) => {
+                {servicesData.map((_, index) => {
                   return (
                     <motion.div
                         key={index}
@@ -173,7 +145,7 @@ export function ScrollingFeatureShowcase() {
               </div>
               
               <div className="relative h-[30rem] w-full overflow-hidden">
-                {slidesData.map((slide, index) => (
+                {servicesData.map((slide, index) => (
                   <SlideContent key={index} index={index} slide={slide} activeIndex={activeIndex} />
                 ))}
               </div>
@@ -184,7 +156,7 @@ export function ScrollingFeatureShowcase() {
             <div className="hidden md:flex items-center justify-center p-8" style={gridPatternStyle}>
               <div className="relative w-[30rem] h-[30rem] rounded-2xl overflow-hidden shadow-2xl border-4 border-border/10">
                 <div className="relative w-full h-full">
-                  {slidesData.map((slide, index) => (
+                  {servicesData.map((slide, index) => (
                     <SlideImage key={index} index={index} slide={slide} activeIndex={activeIndex} />
                   ))}
                 </div>
