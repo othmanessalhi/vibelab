@@ -13,9 +13,7 @@ export default function Home() {
       <Hero />
       <div className="bg-background">
         <WhoAreWe />
-        <AnimateIn>
-          <Services />
-        </AnimateIn>
+        <Services />
         <AnimateIn>
           <CaseStudies />
         </AnimateIn>
