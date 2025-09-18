@@ -154,7 +154,7 @@ export function ScrollingFeatureShowcase() {
 
             {/* Right Column: Image Content with Grid Background */}
             <div className="hidden md:flex items-center justify-center p-8" style={gridPatternStyle}>
-              <div className="relative w-[50%] h-[80vh] rounded-2xl overflow-hidden shadow-2xl border-4 border-border/10">
+              <div className="relative w-[30rem] h-[30rem] rounded-2xl overflow-hidden shadow-2xl border-4 border-border/10">
                 <div className="relative w-full h-full">
                   {slidesData.map((slide, index) => (
                     <SlideImage key={index} index={index} slide={slide} activeIndex={activeIndex} />
