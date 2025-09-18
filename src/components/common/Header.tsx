@@ -1,6 +1,6 @@
 "use client";
 
-import { User, Briefcase, Archive, Cpu, Home, Quote } from 'lucide-react';
+import { User, Briefcase, Archive, Cpu, Home, Quote, Mail } from 'lucide-react';
 import { NavBar } from "@/components/ui/tubelight-navbar";
 import Link from 'next/link';
 
@@ -12,6 +12,7 @@ export default function Header() {
     { name: 'Work', url: '#work', icon: Archive },
     { name: 'Testimonials', url: '#testimonials', icon: Quote },
     { name: 'AI Tool', url: '#ai-tool', icon: Cpu },
+    { name: 'Contact', url: '#cta', icon: Mail },
   ];
 
   return (
