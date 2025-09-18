@@ -1,10 +1,4 @@
-
-import {
-  HoverSlider,
-  HoverSliderImage,
-  HoverSliderImageWrap,
-  TextStaggerHover,
-} from '@/components/ui/animated-slideshow';
+import ImageReveal from '@/components/ui/image-reveal';
 
 const SLIDES = [
   {
@@ -39,41 +33,24 @@ const SLIDES = [
   },
 ];
 
+const mappedImages = SLIDES.map((slide, index) => ({
+  id: index + 1,
+  src: slide.imageUrl,
+  alt: slide.title,
+}));
+
 export default function Services() {
   return (
-    <section id="services" className="bg-background">
-      <HoverSlider className="min-h-svh place-content-center p-6 md:px-12 text-foreground">
-        <h3 className="mb-6 text-accent text-xs font-medium capitalize tracking-wide">
-          / our services
-        </h3>
-        <div className="flex flex-wrap items-center justify-evenly gap-6 md:gap-12">
-          <div className="flex  flex-col space-y-2 md:space-y-4   ">
-            {SLIDES.map((slide, index) => (
-              <TextStaggerHover
-                key={slide.title}
-                index={index}
-                className="cursor-pointer text-4xl font-bold uppercase tracking-tighter"
-                text={slide.title}
-              />
-            ))}
-          </div>
-          <HoverSliderImageWrap>
-            {SLIDES.map((slide, index) => (
-              <div key={slide.id} className="  ">
-                <HoverSliderImage
-                  index={index}
-                  imageUrl={slide.imageUrl}
-                  src={slide.imageUrl}
-                  alt={slide.title}
-                  className="size-full max-h-96 object-cover"
-                  loading="eager"
-                  decoding="async"
-                />
-              </div>
-            ))}
-          </HoverSliderImageWrap>
+    <section id="services" className="py-20 md:py-32 bg-background">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-12">
+          <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary tracking-tight">Our Services</h2>
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-primary/70">
+            Hover over our services to see what we can do for you.
+          </p>
         </div>
-      </HoverSlider>
+        <ImageReveal images={mappedImages} />
+      </div>
     </section>
   );
 }
