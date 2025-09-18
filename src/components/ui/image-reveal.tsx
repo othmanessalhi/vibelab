@@ -45,8 +45,6 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
     const [opacity, setOpacity] = useState(0);
     const [scale, setScale] = useState(0.5);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-    const requestRef = useRef<number | null>(null);
-    const prevCursorPosition = useRef({ x: 0, y: 0 });
 
     const handleMouseMove = useCallback((e: MouseEvent) => {
       const { clientX, clientY } = e;
@@ -91,7 +89,7 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
     }, []);
 
     const variantClasses = {
-      default: 'dark:bg-transparent bg-gray-100',
+      default: 'bg-transparent',
       'blue-theme': 'dark:bg-gradient-to-b from-blue-900 from-10% to-blue-950 to-100% bg-blue-100',
       'green-theme': 'dark:bg-gradient-to-b from-green-900 from-10% to-green-950 to-100% bg-green-100',
     };
@@ -139,11 +137,11 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
           >
             <h2
               className={cn(
-                `newFont uppercase font-semibold sm:py-6 py-2 leading-[100%] relative`,
+                `newFont uppercase font-semibold sm:py-6 py-2 leading-[100%] relative text-foreground`,
                 h2SizeClasses[size],
                 activeImage?.id === image.id && isDesktop
-                  ? 'mix-blend-difference z-20 text-gray-300'
-                  : 'text-gray-700 dark:text-gray-300'
+                  ? 'mix-blend-difference z-20'
+                  : ''
               )}
             >
               {image.alt}
@@ -159,7 +157,7 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
               <MoveUpRight className='w-8 h-8' />
             </button>
             <div
-              className={`h-[2px] dark:bg-white bg-black absolute bottom-0 left-0 transition-all duration-300 ease-linear ${
+              className={`h-[2px] bg-foreground absolute bottom-0 left-0 transition-all duration-300 ease-linear ${
                 activeImage?.id === image.id && isDesktop ? 'w-full' : 'w-0'
               }`}
             />
@@ -186,5 +184,3 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
 Component.displayName = 'ImageReveal';
 
 export default Component;
-
-    
