@@ -1,5 +1,4 @@
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+import { ContactForm } from '@/components/sections/ContactForm';
 
 export default function CTA() {
   return (
@@ -12,9 +11,7 @@ export default function CTA() {
           Let's create something amazing together. Get in touch to discuss your project.
         </p>
         <div className="mt-8">
-          <Button asChild size="lg">
-            <Link href="mailto:hello@vibelab.com">Let's Talk</Link>
-          </Button>
+          <ContactForm />
         </div>
       </div>
     </section>
