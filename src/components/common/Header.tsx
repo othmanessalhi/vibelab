@@ -1,11 +1,20 @@
 "use client";
 
-import { User, Briefcase, Archive, Cpu, Home, Quote, Mail, Settings } from 'lucide-react';
+import { User, Briefcase, Archive, Cpu, Home, Quote, Mail, Settings, Moon, Sun } from 'lucide-react';
 import { NavBar } from "@/components/ui/tubelight-navbar";
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { useTheme } from "next-themes"
 
 export default function Header() {
+  const { setTheme } = useTheme();
+
   const navItems = [
     { name: 'Home', url: '#home', icon: Home },
     { name: 'About', url: '#about', icon: User },
@@ -25,9 +34,23 @@ export default function Header() {
         </Link>
       </div>
       <div className="fixed top-0 right-0 z-50 p-4">
-        <Button variant="ghost" size="icon">
-          <Settings className="h-6 w-6 text-primary" />
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon">
+              <Settings className="h-6 w-6 text-primary" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem onClick={() => setTheme("light")}>
+              <Sun className="mr-2" />
+              Light
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setTheme("dark")}>
+              <Moon className="mr-2" />
+              Dark
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
       <NavBar items={navItems} />
     </>
