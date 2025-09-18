@@ -6,14 +6,14 @@ function MovingText() {
     <section className="py-20 md:py-32 bg-background">
         <TextMarquee
           delay={0}
-          baseVelocity={-3}
+          baseVelocity={-2.4}
           clasname='font-bold tracking-[-0.07em] leading-[90%] text-primary'
         >
           IGNITE YOUR BRAND'S POTENTIAL
         </TextMarquee>
         <TextMarquee
           delay={0}
-          baseVelocity={3}
+          baseVelocity={2.4}
           clasname='font-bold tracking-[-0.07em] leading-[90%] text-primary'
         >
           - TRANSCEND THE NOISE
