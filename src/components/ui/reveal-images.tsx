@@ -16,8 +16,8 @@ function RevealImageListItem({ text, images }: ShowImageListItemProps) {
     "relative transition-all duration-500 delay-100 shadow-none w-16 h-16 overflow-hidden rounded-md group-hover:shadow-xl group-hover:w-full group-hover:h-full";
 
   return (
-    <div className="group relative h-fit w-full cursor-pointer overflow-visible py-8">
-      <h1 className="text-7xl font-black text-foreground transition-all duration-500 group-hover:opacity-40">
+    <div className="group relative h-fit w-full cursor-pointer overflow-visible py-8 border-b border-border/20">
+      <h1 className="text-7xl font-black text-left text-foreground transition-all duration-500 group-hover:opacity-40">
         {text}
       </h1>
       <div className={container}>
@@ -41,7 +41,7 @@ function RevealImageListItem({ text, images }: ShowImageListItemProps) {
 
 function RevealImageList({items}: {items: ShowImageListItemProps[]}) {
   return (
-    <div className="flex flex-col gap-1 rounded-sm bg-background px-8 py-4">
+    <div className="flex w-full max-w-2xl flex-col gap-1 rounded-sm bg-background px-8 py-4">
       <h3 className="text-sm font-black uppercase text-muted-foreground">Our services</h3>
       {items.map((item, index) => (
         <RevealImageListItem key={index} text={item.text} images={item.images} />
