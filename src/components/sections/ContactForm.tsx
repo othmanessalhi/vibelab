@@ -7,7 +7,6 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Send } from "lucide-react";
@@ -50,70 +49,66 @@ export function ContactForm() {
   };
 
   return (
-    <Card className="shadow-lg bg-secondary/20 border-border">
-      <CardContent className="p-6">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 text-left">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-headline">Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Your Name" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-headline">Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="your.email@example.com" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="message"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-headline">Message</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="How can we help you?"
-                      className="resize-none"
-                      rows={5}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button type="submit" disabled={isLoading} className="w-full">
-              {isLoading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Sending...
-                </>
-              ) : (
-                <>
-                  <Send className="mr-2 h-4 w-4" />
-                  Send Message
-                </>
-              )}
-            </Button>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 text-left">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="font-headline">Name</FormLabel>
+              <FormControl>
+                <Input placeholder="Your Name" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="font-headline">Email</FormLabel>
+              <FormControl>
+                <Input placeholder="your.email@example.com" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="font-headline">Message</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="How can we help you?"
+                  className="resize-none"
+                  rows={3}
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit" disabled={isLoading} className="w-full">
+          {isLoading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Sending...
+            </>
+          ) : (
+            <>
+              <Send className="mr-2 h-4 w-4" />
+              Send Message
+            </>
+          )}
+        </Button>
+      </form>
+    </Form>
   );
 }
