@@ -12,15 +12,16 @@ interface ShowImageListItemProps {
 }
 
 function RevealImageListItem({ text, images }: ShowImageListItemProps) {
-  const container = "absolute right-8 -top-1 z-40 h-20 w-16";
+  const container = "absolute right-8 top-0 z-40 h-24 w-20";
   const effect =
-    "relative duration-500 delay-100 shadow-none group-hover:shadow-xl scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 group-hover:w-full group-hover:h-full w-16 h-16 overflow-hidden transition-all rounded-md";
+    "relative duration-500 delay-100 shadow-none group-hover:shadow-xl scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 group-hover:w-full group-hover:h-full w-16 h-20 overflow-hidden transition-all rounded-md";
 
   return (
-    <div className="group relative h-fit w-fit overflow-visible py-8">
-      <h1 className="text-7xl font-black text-foreground transition-all duration-500 group-hover:opacity-40">
+    <div className="group relative h-fit w-full cursor-pointer overflow-hidden py-4 px-4 rounded-lg transition-colors hover:bg-muted/50">
+      <h1 className="text-5xl font-black text-foreground transition-all duration-500 group-hover:text-accent">
         {text}
       </h1>
+       <div className="absolute bottom-4 left-4 h-0.5 w-0 bg-accent transition-all duration-300 group-hover:w-[calc(100%-2rem)]"></div>
       <div className={container}>
         <div className={effect}>
           <img alt={images[1].alt} src={images[1].src} className="h-full w-full object-cover" />
@@ -29,7 +30,7 @@ function RevealImageListItem({ text, images }: ShowImageListItemProps) {
       <div
         className={cn(
           container,
-          "translate-x-0 translate-y-0 rotate-0 transition-all delay-150 duration-500 group-hover:translate-x-6 group-hover:translate-y-6 group-hover:rotate-12",
+          "translate-x-0 translate-y-0 rotate-0 transition-all delay-150 duration-500 group-hover:translate-x-4 group-hover:translate-y-4 group-hover:rotate-12",
         )}
       >
         <div className={cn(effect, "duration-200")}>
