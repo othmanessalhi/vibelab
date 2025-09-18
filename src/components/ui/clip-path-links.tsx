@@ -93,7 +93,7 @@ const LinkBox = ({ Icon, href, imgSrc, title, description }: { Icon?: React.Elem
   const [scope, animate] = useAnimate();
 
   const getNearestSide = (e: React.MouseEvent) => {
-    const box = (e.target as HTMLElement).getBoundingClientRect();
+    const box = (e.currentTarget as HTMLElement).getBoundingClientRect();
 
     const proximityToLeft = {
       proximity: Math.abs(box.left - e.clientX),
@@ -144,13 +144,13 @@ const LinkBox = ({ Icon, href, imgSrc, title, description }: { Icon?: React.Elem
           alt={title}
           width={400}
           height={400}
-          className="max-h-24 sm:max-h-28 md:max-h-32 w-auto object-contain"
+          className="max-h-24 sm:max-h-28 md:max-h-32 w-auto object-contain pointer-events-none"
         />
       ) : (
-        Icon && <Icon className="text-3xl sm:text-4xl md:text-5xl" />
+        Icon && <Icon className="text-3xl sm:text-4xl md:text-5xl pointer-events-none" />
       )}
-      <h3 className="mt-4 font-headline text-lg sm:text-xl font-semibold">{title}</h3>
-      <p className="mt-1 text-sm text-center max-w-xs">{description}</p>
+      <h3 className="mt-4 font-headline text-lg sm:text-xl font-semibold pointer-events-none">{title}</h3>
+      <p className="mt-1 text-sm text-center max-w-xs pointer-events-none">{description}</p>
     </>
   )
 
@@ -161,14 +161,14 @@ const LinkBox = ({ Icon, href, imgSrc, title, description }: { Icon?: React.Elem
       onMouseLeave={handleMouseLeave}
       className="relative grid h-48 w-full place-content-center sm:h-56 md:h-64 text-foreground bg-background p-4 text-center"
     >
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center pointer-events-none">
         <LinkContent />
       </div>
 
       <div
         ref={scope}
         style={{ clipPath: BOTTOM_RIGHT_CLIP }}
-        className="absolute inset-0 grid place-content-center bg-primary text-primary-foreground p-4 text-center"
+        className="absolute inset-0 grid place-content-center bg-primary text-primary-foreground p-4 text-center pointer-events-none"
       >
         <div className="flex flex-col items-center">
           <LinkContent />
