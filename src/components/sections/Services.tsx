@@ -46,7 +46,7 @@ export default function Services() {
             </div>
           </div>
       </AnimateIn>
-      <div className="relative w-full h-full py-20">
+      <div className="relative w-full h-full">
         <Carousel slides={servicesData} />
       </div>
     </section>
