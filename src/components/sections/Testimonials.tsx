@@ -110,12 +110,12 @@ export default function Testimonials() {
         
         {/* Mobile Layout */}
         <div className="relative flex h-96 w-full flex-row items-center justify-center overflow-hidden gap-4 md:hidden">
-          <Marquee pauseOnHover vertical className="[--duration:60s]">
+          <Marquee pauseOnHover vertical className="[--duration:30s]">
             {firstHalf.map((review) => (
               <TestimonialCard key={review.username} {...review} />
             ))}
           </Marquee>
-          <Marquee pauseOnHover vertical reverse className="[--duration:60s]">
+          <Marquee pauseOnHover vertical reverse className="[--duration:30s]">
             {secondHalf.map((review) => (
               <TestimonialCard key={review.username} {...review} />
             ))}
