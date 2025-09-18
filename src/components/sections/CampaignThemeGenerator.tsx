@@ -10,7 +10,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, Wand2 } from 'lucide-react';
+import { Loader2, Wand2, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const formSchema = z.object({
   targetAudience: z.string().min(10, "Please describe your target audience in more detail.").max(300),
@@ -52,8 +53,30 @@ export default function CampaignThemeGenerator() {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+      },
+    },
+  };
+
   return (
-    <Card className="shadow-lg bg-background border-border">
+    <Card className="shadow-lg bg-background border-border w-full">
       <CardContent className="p-6">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -94,24 +117,29 @@ export default function CampaignThemeGenerator() {
         {(isLoading || themes.length > 0) && (
           <div className="mt-8">
             <h3 className="font-headline text-2xl font-bold text-primary mb-4">Generated Themes</h3>
-            <div className="space-y-3">
+            <motion.div 
+              className="grid grid-cols-1 gap-4"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
               {isLoading ? (
                  Array.from({ length: 5 }).map((_, i) => (
-                    <div key={i} className="animate-pulse flex space-x-4 p-4 bg-muted/50 rounded-lg">
-                      <div className="flex-1 space-y-2 py-1">
+                    <Card key={i} className="animate-pulse bg-muted/50 p-4">
                         <div className="h-4 bg-muted rounded w-3/4"></div>
-                      </div>
-                    </div>
+                    </Card>
                   ))
               ) : (
                 themes.map((theme, index) => (
-                  <div key={index} className="p-4 bg-accent/10 rounded-lg flex items-start gap-3">
-                    <span className="text-accent font-bold">{index + 1}.</span>
-                    <p className="text-primary/90">{theme}</p>
-                  </div>
+                  <motion.div key={index} variants={itemVariants}>
+                    <Card className="p-4 bg-accent/10 flex items-start gap-4 transform transition-transform hover:scale-105 hover:shadow-lg">
+                      <Sparkles className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                      <p className="text-primary/90">{theme}</p>
+                    </Card>
+                  </motion.div>
                 ))
               )}
-            </div>
+            </motion.div>
           </div>
         )}
       </CardContent>
