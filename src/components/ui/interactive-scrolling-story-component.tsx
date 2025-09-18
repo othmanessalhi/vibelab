@@ -47,10 +47,6 @@ export function ScrollingFeatureShowcase() {
     return Math.floor(pos * slidesData.length);
   });
 
-  const imageTranslateY = useTransform(scrollYProgress, (pos) => {
-    return -pos * 100 + '%';
-  });
-
   const gridPatternStyle = {
     '--grid-color': 'hsl(var(--border))',
     backgroundImage: `
@@ -110,12 +106,18 @@ export function ScrollingFeatureShowcase() {
             {/* Right Column: Image Content with Grid Background */}
             <div className="hidden md:flex items-center justify-center p-8" style={gridPatternStyle}>
               <div className="relative w-[50%] h-[80vh] rounded-2xl overflow-hidden shadow-2xl border-4 border-border/10">
-                <motion.div 
-                  className="absolute top-0 left-0 w-full"
-                  style={{ y: imageTranslateY, height: `${slidesData.length * 100}%` }}
-                >
+                <div className="relative w-full h-full">
                   {slidesData.map((slide, index) => (
-                    <div key={index} className="w-full h-[100vh]">
+                    <motion.div
+                      key={index}
+                      className="absolute inset-0 w-full h-full"
+                      style={{
+                        y: useTransform(activeIndex, val => (val - index) * 100 + '%'),
+                        opacity: useTransform(activeIndex, val => val === index ? 1 : 0.3),
+                        scale: useTransform(activeIndex, val => val === index ? 1 : 0.95),
+                      }}
+                      transition={{ duration: 0.5, ease: 'easeIn' }}
+                    >
                       <img
                         src={slide.image}
                         alt={slide.title}
@@ -126,9 +128,9 @@ export function ScrollingFeatureShowcase() {
                           target.src = `https://placehold.co/800x1200/e2e8f0/4a5568?text=Image+Not+Found`; 
                         }}
                       />
-                    </div>
+                    </motion.div>
                   ))}
-                </motion.div>
+                </div>
               </div>
             </div>
           </div>
