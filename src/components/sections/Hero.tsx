@@ -1,11 +1,24 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 import Image from "next/image";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
 
 export default function Hero() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
+
   const headlines = [
     "Your Brand is Invisible.",
     "Competitors Steal Your Clicks.",
@@ -23,6 +36,22 @@ export default function Hero() {
     imageHint: "misty landscape"
   };
 
+  const titleComponent = isMobile ? (
+    <h1 className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
+      {headlines[0]}
+    </h1>
+  ) : (
+    <div className="h-24">
+      <GooeyText
+        texts={headlines}
+        morphTime={2}
+        cooldownTime={0.4}
+        className="font-bold"
+        textClassName="text-4xl md:text-[6rem] mt-1 leading-none"
+      />
+    </div>
+  );
+
   return (
     <div id="home" className="flex flex-col overflow-hidden relative">
       <div
@@ -36,17 +65,7 @@ export default function Hero() {
       </div>
       <BackgroundPaths />
       <ContainerScroll
-        titleComponent={
-          <div className="h-24">
-            <GooeyText
-              texts={headlines}
-              morphTime={2}
-              cooldownTime={0.4}
-              className="font-bold"
-              textClassName="text-4xl md:text-[6rem] mt-1 leading-none"
-            />
-          </div>
-        }
+        titleComponent={titleComponent}
       >
         {heroImage && (
           <Image
