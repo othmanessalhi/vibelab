@@ -49,7 +49,7 @@ export default function Services() {
             Hover over our services to see what we can do for you.
           </p>
         </div>
-        <ImageReveal images={mappedImages} />
+        <ImageReveal images={mappedImages} size="compact" />
       </div>
     </section>
   );
