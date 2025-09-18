@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { LucideIcon } from "lucide-react"
@@ -20,16 +20,51 @@ interface NavBarProps {
 export function NavBar({ items, className }: NavBarProps) {
   const [activeTab, setActiveTab] = useState(items[0].name)
   const [isMobile, setIsMobile] = useState(false)
+  const sectionsRef = useRef<Map<string, HTMLElement | null>>(new Map());
 
   useEffect(() => {
+    items.forEach(item => {
+      if (item.url !== '#') {
+        const element = document.getElementById(item.url.substring(1));
+        sectionsRef.current.set(item.name, element);
+      } else {
+        const homeElement = document.getElementById('home-hero'); // Assuming hero has an id 'home-hero'
+        if (homeElement) sectionsRef.current.set(item.name, homeElement);
+        else {
+            // Fallback for home section if no specific ID is present
+            const mainElement = document.querySelector('main');
+            if (mainElement) sectionsRef.current.set(item.name, mainElement.firstElementChild as HTMLElement);
+        }
+      }
+    });
+
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      let currentSection = items[0].name;
+
+      for (const [name, element] of sectionsRef.current.entries()) {
+        if (element && element.offsetTop <= scrollPosition) {
+          currentSection = name;
+        }
+      }
+      setActiveTab(currentSection);
+    };
+
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768)
     }
+    
+    handleResize();
+    handleScroll(); // Set initial active tab
 
-    handleResize()
     window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [items]);
 
   return (
     <div

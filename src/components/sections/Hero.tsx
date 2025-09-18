@@ -24,7 +24,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="flex flex-col overflow-hidden relative">
+    <div id="home" className="flex flex-col overflow-hidden relative">
       <div
         className="absolute inset-0 z-20"
         style={{
