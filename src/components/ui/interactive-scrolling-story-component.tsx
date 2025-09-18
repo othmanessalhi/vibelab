@@ -1,7 +1,8 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 // --- Data for each slide ---
 const slidesData = [
@@ -34,33 +35,22 @@ const slidesData = [
 
 // --- Main App Component ---
 export function ScrollingFeatureShowcase() {
-  // State to track the currently active slide index
-  const [activeIndex, setActiveIndex] = useState(0);
-  // Ref to the main scrollable container
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  // Ref to the sticky content panel
-  const stickyPanelRef = useRef<HTMLDivElement>(null);
+  const targetRef = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ['start start', 'end end'],
+  });
 
-  // --- Scroll Handler ---
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
+  const sectionHeight = slidesData.length * 100;
 
-    const handleScroll = () => {
-      const scrollableHeight = container.scrollHeight - window.innerHeight;
-      const stepHeight = scrollableHeight / slidesData.length;
-      const newActiveIndex = Math.min(
-        slidesData.length - 1,
-        Math.floor(container.scrollTop / stepHeight)
-      );
-      setActiveIndex(newActiveIndex);
-    };
+  const activeIndex = useTransform(scrollYProgress, (pos) => {
+    return Math.floor(pos * slidesData.length);
+  });
 
-    container.addEventListener('scroll', handleScroll);
-    return () => container.removeEventListener('scroll', handleScroll);
-  }, []);
-  
-  // Styles for the grid pattern on the right side
+  const imageTranslateY = useTransform(scrollYProgress, (pos) => {
+    return -pos * 100 + '%';
+  });
+
   const gridPatternStyle = {
     '--grid-color': 'hsl(var(--border))',
     backgroundImage: `
@@ -71,18 +61,8 @@ export function ScrollingFeatureShowcase() {
   };
 
   return (
-    <div 
-      ref={scrollContainerRef}
-      className="h-screen w-full overflow-y-auto"
-      style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-    >
-      <style>{`
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
-      <div style={{ height: `${slidesData.length * 100}vh` }}>
-        <div ref={stickyPanelRef} className="sticky top-0 h-screen w-full flex flex-col items-center justify-center bg-background text-foreground transition-colors duration-700 ease-in-out">
+    <div ref={targetRef} className="relative w-full" style={{ height: `${sectionHeight}vh` }}>
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center bg-background text-foreground transition-colors duration-700 ease-in-out">
           <div className="grid grid-cols-1 md:grid-cols-2 h-full w-full max-w-7xl mx-auto">
             
             {/* Left Column: Text Content, Pagination & Button */}
@@ -90,37 +70,32 @@ export function ScrollingFeatureShowcase() {
               {/* Pagination Bars */}
               <div className="absolute top-16 left-16 flex space-x-2">
                 {slidesData.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                        const container = scrollContainerRef.current;
-                        if(container){
-                            const scrollableHeight = container.scrollHeight - window.innerHeight;
-                            const stepHeight = scrollableHeight / slidesData.length;
-                            container.scrollTo({ top: stepHeight * index, behavior: 'smooth' });
-                        }
-                    }}
-                    className={`h-1 rounded-full transition-all duration-500 ease-in-out ${
-                      index === activeIndex ? 'w-12 bg-primary/80' : 'w-6 bg-primary/20'
-                    }`}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
+                    <motion.div
+                        key={index}
+                        className="h-1 rounded-full bg-primary/20"
+                        style={{
+                            width: useTransform(activeIndex, val => (val === index ? '3rem' : '1.5rem')),
+                            backgroundColor: useTransform(activeIndex, val => val === index ? 'hsl(var(--primary))' : 'hsl(var(--primary) / 0.2)'),
+                        }}
+                        transition={{ duration: 0.5, ease: 'easeIn' }}
+                    />
                 ))}
               </div>
               
-              <div className="relative h-64 w-full">
+              <div className="relative h-64 w-full overflow-hidden">
                 {slidesData.map((slide, index) => (
-                  <div
+                  <motion.div
                     key={index}
-                    className={`absolute inset-0 transition-all duration-700 ease-in-out ${
-                      index === activeIndex
-                        ? 'opacity-100 translate-y-0'
-                        : 'opacity-0 translate-y-10'
-                    }`}
+                    className="absolute inset-0"
+                    style={{
+                        y: useTransform(activeIndex, val => (val - index) * 100 + '%'),
+                        opacity: useTransform(activeIndex, val => val === index ? 1 : 0),
+                    }}
+                    transition={{ duration: 0.5, ease: 'easeIn' }}
                   >
                     <h2 className="text-5xl md:text-6xl font-bold tracking-tighter text-primary">{slide.title}</h2>
                     <p className="mt-6 text-lg md:text-xl max-w-md text-primary/80">{slide.description}</p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
 
@@ -135,12 +110,12 @@ export function ScrollingFeatureShowcase() {
             {/* Right Column: Image Content with Grid Background */}
             <div className="hidden md:flex items-center justify-center p-8" style={gridPatternStyle}>
               <div className="relative w-[50%] h-[80vh] rounded-2xl overflow-hidden shadow-2xl border-4 border-border/10">
-                <div 
-                  className="absolute top-0 left-0 w-full h-full transition-transform duration-700 ease-in-out"
-                  style={{ transform: `translateY(-${activeIndex * 100}%)` }}
+                <motion.div 
+                  className="absolute top-0 left-0 w-full"
+                  style={{ y: imageTranslateY, height: `${slidesData.length * 100}%` }}
                 >
                   {slidesData.map((slide, index) => (
-                    <div key={index} className="w-full h-full">
+                    <div key={index} className="w-full h-[100vh]">
                       <img
                         src={slide.image}
                         alt={slide.title}
@@ -153,11 +128,10 @@ export function ScrollingFeatureShowcase() {
                       />
                     </div>
                   ))}
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
-        </div>
       </div>
     </div>
   );
