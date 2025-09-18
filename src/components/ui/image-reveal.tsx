@@ -69,13 +69,16 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
           requestRef.current = null;
         });
       };
-
-      window.addEventListener('mousemove', updateCursorPosition);
+      if (isDesktop) {
+        window.addEventListener('mousemove', updateCursorPosition);
+      }
       return () => {
-        window.removeEventListener('mousemove', updateCursorPosition);
+        if (isDesktop) {
+          window.removeEventListener('mousemove', updateCursorPosition);
+        }
         if (requestRef.current) cancelAnimationFrame(requestRef.current);
       };
-    }, [handleMouseMove]);
+    }, [handleMouseMove, isDesktop]);
 
     const handleImageHover = useCallback(
       (image: ImageData) => {
@@ -141,14 +144,14 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
       <div
         ref={ref}
         className={commonClasses}
-        onMouseLeave={handleMouseLeave}
+        onMouseLeave={isDesktop ? handleMouseLeave : undefined}
         {...props}
       >
         {images.map((image) => (
           <div
             key={image.id}
             className={cn(`cursor-pointer relative sm:flex items-center justify-between border-b`, sizeClasses[size])}
-            onMouseEnter={() => handleImageHover(image)}
+            onMouseEnter={isDesktop ? () => handleImageHover(image) : undefined}
           >
             {!isDesktop && (
               <img
@@ -161,7 +164,7 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
               className={cn(
                 `newFont uppercase font-semibold sm:py-6 py-2 leading-[100%] relative`,
                 h2SizeClasses[size],
-                activeImage?.id === image.id
+                activeImage?.id === image.id && isDesktop
                   ? 'mix-blend-difference z-20 text-gray-300'
                   : 'text-gray-700 dark:text-gray-300'
               )}
@@ -171,7 +174,7 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
             <button
               className={cn(
                 `sm:block hidden p-4 rounded-full transition-all duration-300 ease-out`,
-                activeImage?.id === image.id
+                activeImage?.id === image.id && isDesktop
                   ? 'mix-blend-difference z-20 bg-white text-black'
                   : ''
               )}
@@ -180,7 +183,7 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
             </button>
             <div
               className={`h-[2px] dark:bg-white bg-black absolute bottom-0 left-0 transition-all duration-300 ease-linear ${
-                activeImage?.id === image.id ? 'w-full' : 'w-0'
+                activeImage?.id === image.id && isDesktop ? 'w-full' : 'w-0'
               }`}
             />
           </div>
@@ -206,3 +209,5 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
 Component.displayName = 'ImageReveal';
 
 export default Component;
+
+    
