@@ -40,50 +40,10 @@ function RevealImageListItem({ text, images }: ShowImageListItemProps) {
   );
 }
 
-function RevealImageList() {
-  const items: ShowImageListItemProps[] = [
-    {
-      text: "Branding",
-      images: [
-        {
-          src: "https://images.unsplash.com/photo-1512295767273-ac109ac3acfa?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-          alt: "Image 1",
-        },
-        {
-          src: "https://images.unsplash.com/photo-1567262439850-1d4dc1fefdd0?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-          alt: "Image 2",
-        },
-      ],
-    },
-    {
-      text: "Web design",
-      images: [
-        {
-          src: "https://images.unsplash.com/photo-1587440871875-191322ee64b0?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-          alt: "Image 1",
-        },
-        {
-          src: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-          alt: "Image 2",
-        },
-      ],
-    },
-    {
-      text: "Illustration",
-      images: [
-        {
-          src: "https://images.unsplash.com/photo-1575995872537-3793d29d972c?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-          alt: "Image 1",
-        },
-        {
-          src: "https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-          alt: "Image 2",
-        },
-      ],
-    },
-  ];
+function RevealImageList({items}: {items: ShowImageListItemProps[]}) {
   return (
-    <div className="flex flex-col gap-1 rounded-sm bg-background p-4">
+    <div className="flex flex-col gap-1 rounded-sm bg-background px-8 py-4">
+      <h3 className="text-sm font-black uppercase text-muted-foreground">Our services</h3>
       {items.map((item, index) => (
         <RevealImageListItem key={index} text={item.text} images={item.images} />
       ))}
