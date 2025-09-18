@@ -71,7 +71,7 @@ const InteractiveSelector = () => {
       <div className="h-12"></div>
 
       {/* Options Container */}
-      <div className="options flex w-full max-w-[900px] min-w-[300px] md:min-w-[600px] h-[400px] mx-auto items-stretch overflow-hidden relative">
+      <div className="options flex w-full max-w-[90vw] md:max-w-[900px] min-w-[300px] md:min-w-[600px] h-[400px] mx-auto items-stretch overflow-hidden relative">
         {options.map((option, index) => (
           <div
             key={index}
@@ -81,14 +81,13 @@ const InteractiveSelector = () => {
             `}
             style={{
               backgroundImage: `url('${option.image}')`,
-              backgroundSize: activeIndex === index ? 'auto 100%' : 'auto 120%',
+              backgroundSize: 'cover',
               backgroundPosition: 'center',
               backfaceVisibility: 'hidden',
               opacity: animatedOptions.includes(index) ? 1 : 0,
               transform: animatedOptions.includes(index) ? 'translateX(0)' : 'translateX(-60px)',
               minWidth: '60px',
-              minHeight: '100px',
-              margin: 0,
+              margin: '0 4px',
               borderRadius: '0.5rem',
               borderWidth: '2px',
               borderStyle: 'solid',
@@ -100,12 +99,6 @@ const InteractiveSelector = () => {
                 : '0 10px 30px rgba(0,0,0,0.30)',
               flex: activeIndex === index ? '7 1 0%' : '1 1 0%',
               zIndex: activeIndex === index ? 10 : 1,
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'flex-end',
-              position: 'relative',
-              overflow: 'hidden',
-              willChange: 'flex-grow, box-shadow, background-size, background-position'
             }}
             onClick={() => handleOptionClick(index)}
           >
@@ -113,11 +106,9 @@ const InteractiveSelector = () => {
             <div 
               className="shadow absolute left-0 right-0 pointer-events-none transition-all duration-700 ease-in-out"
               style={{
-                bottom: activeIndex === index ? '0' : '-40px',
+                bottom: '0',
                 height: '120px',
-                boxShadow: activeIndex === index 
-                  ? 'inset 0 -120px 120px -120px #000, inset 0 -120px 120px -80px #000' 
-                  : 'inset 0 -120px 0px -120px #000, inset 0 -120px 0px -80px #000'
+                boxShadow: 'inset 0 -120px 120px -120px hsl(var(--background)), inset 0 -120px 120px -80px hsl(var(--background))'
               }}
             ></div>
             
@@ -150,45 +141,6 @@ const InteractiveSelector = () => {
           </div>
         ))}
       </div>
-      
-      {/* Custom animations */}
-      <style jsx>{`
-        @keyframes slideFadeIn {
-          0% {
-            opacity: 0;
-            transform: translateX(-60px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        
-        @keyframes fadeInFromTop {
-          0% {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-fadeInTop {
-          opacity: 0;
-          transform: translateY(-20px);
-          animation: fadeInFromTop 0.8s ease-in-out forwards;
-        }
-        
-        .delay-300 {
-          animation-delay: 0.3s;
-        }
-        
-        .delay-600 {
-          animation-delay: 0.6s;
-        }
-      `}</style>
     </div>
   );
 };
