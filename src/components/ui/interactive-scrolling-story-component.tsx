@@ -3,7 +3,6 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
-import { GooeyText } from './gooey-text-morphing';
 
 // --- Data for each slide ---
 const slidesData = [
@@ -34,8 +33,6 @@ const slidesData = [
   },
 ];
 
-const serviceTitles = slidesData.map(slide => slide.title);
-
 interface SlideContentProps {
   index: number;
   slide: typeof slidesData[0];
@@ -49,18 +46,10 @@ const SlideContent: React.FC<SlideContentProps> = ({ index, slide, activeIndex }
   return (
     <motion.div
       className="absolute inset-0 flex flex-col justify-center"
-      style={{ y: y.get() + '%', opacity }}
+      style={{ y, opacity }}
       transition={{ duration: 0.5, ease: 'easeIn' }}
     >
-        <div className="h-24">
-            <GooeyText
-                texts={serviceTitles}
-                morphTime={1.5}
-                cooldownTime={0.2}
-                className="font-bold"
-                textClassName="text-5xl md:text-6xl tracking-tighter text-primary"
-            />
-        </div>
+      <h2 className="text-5xl md:text-6xl font-bold tracking-tighter text-primary">{slide.title}</h2>
       <p className="mt-6 text-lg md:text-xl max-w-md text-primary/80">{slide.description}</p>
       <div className="mt-8">
         <Button asChild size="lg">
@@ -88,7 +77,7 @@ const SlideImage: React.FC<SlideImageProps> = ({ index, slide, activeIndex }) =>
     <motion.div
       className="absolute inset-0 w-full h-full"
       style={{ 
-        y: y.get() + '%', 
+        y, 
         opacity,
         scale,
       }}
