@@ -16,11 +16,9 @@ function RevealImageListItem({ text, images }: ShowImageListItemProps) {
 
   return (
     <div className="group relative w-full cursor-pointer border-b border-border/20 py-8">
-      <div className="flex items-center">
-        <h1 className="text-5xl font-black text-left text-foreground transition-all duration-500 group-hover:text-accent">
-          {text}
-        </h1>
-      </div>
+      <h1 className="text-5xl font-black text-left text-foreground transition-all duration-500 group-hover:text-accent">
+        {text}
+      </h1>
       <div 
         className={cn(
           imageContainerBase,
