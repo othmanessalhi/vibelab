@@ -4,6 +4,7 @@ import TextMarquee from '@/components/ui/text-marque';
 function MovingText() {
   return (
     <section className="py-20 md:py-32 bg-background">
+      <div className="overflow-x-hidden">
         <TextMarquee
           delay={0}
           baseVelocity={-2.4}
@@ -18,6 +19,7 @@ function MovingText() {
         >
           - TRANSCEND THE NOISE
         </TextMarquee>
+      </div>
     </section>
   );
 }
