@@ -175,14 +175,14 @@ export function Carousel({ slides }: CarouselProps) {
       </div>
       <button
         onClick={handlePreviousClick}
-        className="absolute top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-background/50 backdrop-blur-sm text-primary transition-all duration-300 hover:bg-background left-4"
+        className="absolute top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-accent/80 text-accent-foreground backdrop-blur-sm transition-all duration-300 hover:bg-accent left-4"
         aria-label="Go to previous slide"
       >
         <ChevronLeft className="h-6 w-6" />
       </button>
       <button
         onClick={handleNextClick}
-        className="absolute top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-background/50 backdrop-blur-sm text-primary transition-all duration-300 hover:bg-background right-4"
+        className="absolute top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-accent/80 text-accent-foreground backdrop-blur-sm transition-all duration-300 hover:bg-accent right-4"
         aria-label="Go to next slide"
       >
         <ChevronRight className="h-6 w-6" />
