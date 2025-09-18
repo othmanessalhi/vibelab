@@ -1,8 +1,9 @@
 "use client";
 
-import { User, Briefcase, Archive, Cpu, Home, Quote, Mail } from 'lucide-react';
+import { User, Briefcase, Archive, Cpu, Home, Quote, Mail, Settings } from 'lucide-react';
 import { NavBar } from "@/components/ui/tubelight-navbar";
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 export default function Header() {
   const navItems = [
@@ -22,6 +23,11 @@ export default function Header() {
             <span className="absolute -inset-0.5 bg-primary/50 rounded-full blur-2xl opacity-75"></span>
             <span className="relative">VL</span>
         </Link>
+      </div>
+      <div className="fixed top-0 right-0 z-50 p-4">
+        <Button variant="ghost" size="icon">
+          <Settings className="h-6 w-6 text-primary" />
+        </Button>
       </div>
       <NavBar items={navItems} />
     </>
