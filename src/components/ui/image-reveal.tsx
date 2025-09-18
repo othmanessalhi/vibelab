@@ -50,33 +50,17 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
 
     const handleMouseMove = useCallback((e: MouseEvent) => {
       const { clientX, clientY } = e;
-      const dx = clientX - prevCursorPosition.current.x;
-      const dy = clientY - prevCursorPosition.current.y;
-
-      const easeAmount = 0.2;
-      const newX = prevCursorPosition.current.x + dx * easeAmount;
-      const newY = prevCursorPosition.current.y + dy * easeAmount;
-
-      setCursorPosition({ x: newX, y: newY });
-      prevCursorPosition.current = { x: newX, y: newY };
+      setCursorPosition({ x: clientX, y: clientY });
     }, []);
 
     useEffect(() => {
-      const updateCursorPosition = (e: MouseEvent) => {
-        if (requestRef.current) return;
-        requestRef.current = requestAnimationFrame(() => {
-          handleMouseMove(e);
-          requestRef.current = null;
-        });
-      };
       if (isDesktop) {
-        window.addEventListener('mousemove', updateCursorPosition);
+        window.addEventListener('mousemove', handleMouseMove);
       }
       return () => {
         if (isDesktop) {
-          window.removeEventListener('mousemove', updateCursorPosition);
+          window.removeEventListener('mousemove', handleMouseMove);
         }
-        if (requestRef.current) cancelAnimationFrame(requestRef.current);
       };
     }, [handleMouseMove, isDesktop]);
 
@@ -153,13 +137,6 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
             className={cn(`cursor-pointer relative sm:flex items-center justify-between border-b`, sizeClasses[size])}
             onMouseEnter={isDesktop ? () => handleImageHover(image) : undefined}
           >
-            {!isDesktop && (
-              <img
-                src={image.src}
-                className='sm:w-32 sm:h-20 w-full h-52 object-cover rounded-md'
-                alt='mobileImg'
-              />
-            )}
             <h2
               className={cn(
                 `newFont uppercase font-semibold sm:py-6 py-2 leading-[100%] relative`,

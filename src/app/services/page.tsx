@@ -1,12 +1,20 @@
 
+import { RevealImageList } from '@/components/ui/reveal-images';
 import { servicesData } from '@/lib/services-data';
-import ImageReveal from '@/components/ui/image-reveal';
 
 export default function ServicesPage() {
-  const serviceImages = servicesData.map((service, index) => ({
-    id: index + 1,
-    src: service.image,
-    alt: service.title,
+  const items = servicesData.map((service, index) => ({
+    text: service.title,
+    images: [
+      {
+        src: service.image,
+        alt: service.title,
+      },
+      {
+        src: `https://picsum.photos/seed/service${index}/400/600`,
+        alt: `Abstract for ${service.title}`,
+      },
+    ] as [{ src: string; alt: string; }, { src: string; alt: string; }],
   }));
 
   return (
@@ -19,11 +27,9 @@ export default function ServicesPage() {
           </p>
         </div>
         <div className="flex justify-center">
-            <ImageReveal images={serviceImages} />
+            <RevealImageList items={items} />
         </div>
       </div>
     </div>
   );
 }
-
-    
