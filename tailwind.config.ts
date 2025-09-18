@@ -136,6 +136,14 @@ export default {
                 transform: 'translateX(0)',
             },
         },
+         marqueeScroll: {
+          '0%': {
+            transform: 'translateX(0%)',
+          },
+          '100%': {
+            transform: 'translateX(-50%)',
+          },
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -147,6 +155,7 @@ export default {
         'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
         'fadeInTop': 'fadeInTop 0.8s ease-in-out forwards',
         'slideFadeIn': 'slideFadeIn 0.8s ease-in-out forwards',
+        'marquee': 'marqueeScroll 25s linear infinite',
       },
     },
   },
