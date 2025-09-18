@@ -4,20 +4,11 @@ import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 import Image from "next/image";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-    };
-  }, []);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const headlines = [
     "Your Brand is Invisible.",
@@ -30,6 +21,28 @@ export default function Hero() {
     "VibeLab Sees What's Next."
   ];
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    let interval: NodeJS.Timeout;
+    if (isMobile) {
+      interval = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % headlines.length);
+      }, 2400); // Change headline every 2.4 seconds
+    }
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  }, [isMobile, headlines.length]);
+
   const heroImage = {
     imageUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description: "A serene and misty landscape with a river reflecting the sky, surrounded by trees.",
@@ -37,9 +50,20 @@ export default function Hero() {
   };
 
   const titleComponent = isMobile ? (
-    <h1 className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
-      {headlines[0]}
-    </h1>
+    <div className="h-24 flex items-center justify-center">
+      <AnimatePresence mode="wait">
+        <motion.h1
+          key={currentIndex}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="text-4xl text-center md:text-[6rem] font-bold mt-1 leading-none"
+        >
+          {headlines[currentIndex]}
+        </motion.h1>
+      </AnimatePresence>
+    </div>
   ) : (
     <div className="h-24">
       <GooeyText
