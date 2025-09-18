@@ -18,9 +18,9 @@ export default function Hero() {
   ];
 
   const heroImage = {
-    imageUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    description: "A serene and misty landscape with a river reflecting the sky, surrounded by trees.",
-    imageHint: "misty landscape"
+    imageUrl: "https://images.unsplash.com/photo-1690767571878-36653774a77e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "A person in a futuristic, metallic outfit stands against a vibrant red background, embodying an avant-garde fashion statement.",
+    imageHint: "avant-garde fashion"
   };
 
   const titleComponent = (
