@@ -29,17 +29,13 @@ export function GooeyText({
 
     const setMorph = (fraction: number) => {
       if (text1Ref.current && text2Ref.current) {
-        text2Ref.current.style.filter = `blur(${Math.min(
-          8 / fraction - 8,
-          100
-        )}px)`;
+        const blurValue = Math.max(0, 8 / Math.max(fraction, 0.001) - 8);
+        text2Ref.current.style.filter = `blur(${Math.min(blurValue, 100)}px)`;
         text2Ref.current.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
 
         fraction = 1 - fraction;
-        text1Ref.current.style.filter = `blur(${Math.min(
-          8 / fraction - 8,
-          100
-        )}px)`;
+        const blurValue1 = Math.max(0, 8 / Math.max(fraction, 0.001) - 8);
+        text1Ref.current.style.filter = `blur(${Math.min(blurValue1, 100)}px)`;
         text1Ref.current.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
       }
     };
