@@ -46,9 +46,11 @@ export default function Services() {
             </div>
           </div>
       </AnimateIn>
-      <div className="relative w-full h-full">
-        <Carousel slides={servicesData} />
-      </div>
+      <AnimateIn>
+        <div className="relative w-full h-full">
+          <Carousel slides={servicesData} />
+        </div>
+      </AnimateIn>
     </section>
   );
 }
