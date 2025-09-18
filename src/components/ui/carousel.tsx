@@ -1,5 +1,5 @@
 "use client";
-import { IconArrowNarrowRight } from "@tabler/icons-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useRef, useId, useEffect } from "react";
 
 interface SlideData {
@@ -125,30 +125,6 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
   );
 };
 
-interface CarouselControlProps {
-  type: string;
-  title: string;
-  handleClick: () => void;
-}
-
-const CarouselControl = ({
-  type,
-  title,
-  handleClick,
-}: CarouselControlProps) => {
-  return (
-    <button
-      className={`w-10 h-10 flex items-center mx-2 justify-center bg-neutral-200 dark:bg-neutral-800 border-3 border-transparent rounded-full focus:border-[#6D64F7] focus:outline-none hover:-translate-y-0.5 active:translate-y-0.5 transition duration-200 ${
-        type === "previous" ? "rotate-180" : ""
-      }`}
-      title={title}
-      onClick={handleClick}
-    >
-      <IconArrowNarrowRight className="text-neutral-600 dark:text-neutral-200" />
-    </button>
-  );
-};
-
 interface CarouselProps {
   slides: SlideData[];
 }
@@ -176,39 +152,44 @@ export function Carousel({ slides }: CarouselProps) {
 
   return (
     <div
-      className="relative w-[70vmin] h-[70vmin] mx-auto"
+      className="relative w-full"
       aria-labelledby={`carousel-heading-${id}`}
     >
-      <ul
-        className="absolute flex mx-[-4vmin] transition-transform duration-1000 ease-in-out"
-        style={{
-          transform: `translateX(-${current * (100 / slides.length)}%)`,
-        }}
-      >
-        {slides.map((slide, index) => (
-          <Slide
-            key={index}
-            slide={slide}
-            index={index}
-            current={current}
-            handleSlideClick={handleSlideClick}
-          />
-        ))}
-      </ul>
-
-      <div className="absolute flex justify-center w-full top-[calc(100%+1rem)]">
-        <CarouselControl
-          type="previous"
-          title="Go to previous slide"
-          handleClick={handlePreviousClick}
-        />
-
-        <CarouselControl
-          type="next"
-          title="Go to next slide"
-          handleClick={handleNextClick}
-        />
+      <div className="relative w-[70vmin] h-[70vmin] mx-auto">
+        <ul
+          className="absolute flex mx-[-4vmin] transition-transform duration-1000 ease-in-out"
+          style={{
+            transform: `translateX(-${current * (100 / slides.length)}%)`,
+          }}
+        >
+          {slides.map((slide, index) => (
+            <Slide
+              key={index}
+              slide={slide}
+              index={index}
+              current={current}
+              handleSlideClick={handleSlideClick}
+            />
+          ))}
+        </ul>
       </div>
+
+
+      <button
+        onClick={handlePreviousClick}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-background/50 backdrop-blur-sm text-primary transition-colors hover:bg-background"
+        aria-label="Go to previous slide"
+      >
+        <ChevronLeft className="h-6 w-6" />
+      </button>
+      <button
+        onClick={handleNextClick}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-background/50 backdrop-blur-sm text-primary transition-colors hover:bg-background"
+        aria-label="Go to next slide"
+      >
+        <ChevronRight className="h-6 w-6" />
+      </button>
+
     </div>
   );
 }
