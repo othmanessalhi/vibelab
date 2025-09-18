@@ -17,7 +17,7 @@ export default function Header() {
     <>
       <div className="fixed top-0 left-0 z-50 p-4">
         <Link href="/" className="relative text-2xl font-bold font-headline text-primary tracking-tighter animate-logo-glow">
-            <span className="absolute -inset-0.5 bg-primary/30 rounded-full blur-xl opacity-75"></span>
+            <span className="absolute -inset-0.5 bg-primary/50 rounded-full blur-2xl opacity-75"></span>
             <span className="relative">VL</span>
         </Link>
       </div>
