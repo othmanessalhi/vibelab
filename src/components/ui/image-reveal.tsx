@@ -111,13 +111,13 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
 
     const sizeClasses = {
       default: 'p-4 text-xl sm:text-2xl md:text-5xl',
-      compact: 'p-2 text-lg sm:text-xl md:text-4xl',
+      compact: 'p-1 text-base sm:text-lg md:text-3xl',
       expanded: 'p-6 text-2xl sm:text-3xl md:text-6xl',
     };
 
     const h2SizeClasses = {
         default: 'text-xl sm:text-2xl md:text-5xl',
-        compact: 'text-lg sm:text-xl md:text-4xl',
+        compact: 'text-base sm:text-lg md:text-3xl',
         expanded: 'text-2xl sm:text-3xl md:text-6xl',
     };
 
@@ -189,7 +189,7 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
           <img
             src={activeImage.src}
             alt={activeImage.alt}
-            className={`fixed dark:bg-gray-950 bg-white object-cover pointer-events-none z-10 w-[300px] h-[400px] rounded-lg`}
+            className={`fixed dark:bg-gray-950 bg-white object-cover pointer-events-none z-10 w-[240px] h-[320px] rounded-lg`}
             style={{
               left: `${cursorPosition.x}px`,
               top: `${cursorPosition.y}px`,
