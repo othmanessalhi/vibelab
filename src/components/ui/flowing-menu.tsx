@@ -20,14 +20,11 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
   const animationDefaults = { duration: 0.6, ease: "expo" };
 
   const findClosestEdge = (
-    mouseX: number,
     mouseY: number,
-    width: number,
     height: number
   ): "top" | "bottom" => {
-    const topEdgeDist = Math.pow(mouseX - width / 2, 2) + Math.pow(mouseY, 2);
-    const bottomEdgeDist =
-      Math.pow(mouseX - width / 2, 2) + Math.pow(mouseY - height, 2);
+    const topEdgeDist = mouseY;
+    const bottomEdgeDist = height - mouseY;
     return topEdgeDist < bottomEdgeDist ? "top" : "bottom";
   };
 
@@ -37,9 +34,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
     gsap.killTweensOf([marqueeRef.current, marqueeInnerRef.current]);
     const rect = itemRef.current.getBoundingClientRect();
     const edge = findClosestEdge(
-      ev.clientX - rect.left,
       ev.clientY - rect.top,
-      rect.width,
       rect.height
     );
     const tl = gsap.timeline({ defaults: animationDefaults });
@@ -54,9 +49,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
     gsap.killTweensOf([marqueeRef.current, marqueeInnerRef.current]);
     const rect = itemRef.current.getBoundingClientRect();
     const edge = findClosestEdge(
-      ev.clientX - rect.left,
       ev.clientY - rect.top,
-      rect.width,
       rect.height
     );
     const tl = gsap.timeline({ defaults: animationDefaults });
