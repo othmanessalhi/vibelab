@@ -46,6 +46,8 @@ export function ScrollingFeatureShowcase() {
   const activeIndex = useTransform(scrollYProgress, (pos) => {
     return Math.floor(pos * slidesData.length);
   });
+  
+  const opacity = useTransform(scrollYProgress, [0, 0.05, 0.95, 1], [0, 1, 1, 0]);
 
   const gridPatternStyle = {
     '--grid-color': 'hsl(var(--border))',
@@ -59,7 +61,7 @@ export function ScrollingFeatureShowcase() {
   return (
     <div ref={targetRef} className="relative w-full" style={{ height: `${sectionHeight}vh` }}>
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center bg-background text-foreground transition-colors duration-700 ease-in-out">
-          <div className="grid grid-cols-1 md:grid-cols-2 h-full w-full max-w-7xl mx-auto">
+          <motion.div style={{ opacity }} className="grid grid-cols-1 md:grid-cols-2 h-full w-full max-w-7xl mx-auto">
             
             {/* Left Column: Text Content, Pagination & Button */}
             <div className="relative flex flex-col justify-center p-8 md:p-16 border-r border-border/50">
@@ -113,7 +115,7 @@ export function ScrollingFeatureShowcase() {
                       className="absolute inset-0 w-full h-full"
                       style={{
                         y: useTransform(activeIndex, val => (val - index) * 100 + '%'),
-                        opacity: useTransform(activeIndex, val => val === index ? 1 : 0.3),
+                        opacity: useTransform(activeIndex, val => val === index ? 1 : 0),
                         scale: useTransform(activeIndex, val => val === index ? 1 : 0.95),
                       }}
                       transition={{ duration: 0.5, ease: 'easeIn' }}
@@ -133,7 +135,7 @@ export function ScrollingFeatureShowcase() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
       </div>
     </div>
   );
