@@ -15,11 +15,13 @@ function RevealImageListItem({ text, images }: ShowImageListItemProps) {
   const imageContainerBase = "absolute top-1/2 -translate-y-1/2 z-10 h-40 w-40 overflow-hidden rounded-md shadow-xl transition-all duration-500 scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100";
 
   return (
-    <div className="group relative w-full cursor-pointer border-b border-border/20 py-8">
-      <h1 className="text-5xl font-black text-left text-foreground transition-all duration-500 group-hover:text-accent">
-        {text}
-      </h1>
-      <div 
+    <div className="group relative w-full cursor-pointer border-b border-border/20">
+      <div className="py-8">
+        <h1 className="text-5xl font-black text-left text-foreground transition-all duration-500 group-hover:text-accent">
+            {text}
+        </h1>
+      </div>
+      <div
         className={cn(
           imageContainerBase,
           "right-0 translate-x-[10%]",
