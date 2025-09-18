@@ -25,9 +25,7 @@ export default function Home() {
         <AnimateIn>
           <AITool />
         </AnimateIn>
-        <AnimateIn>
-          <CTA />
-        </AnimateIn>
+        <CTA />
       </div>
     </>
   );
