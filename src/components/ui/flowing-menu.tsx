@@ -68,7 +68,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
     return Array.from({ length: 4 }).map((_, idx) => (
       <React.Fragment key={idx}>
         <span className="
-          text-neutral-900 dark:text-white
+          text-neutral-900
           uppercase font-normal text-[4vh] leading-[1.2] p-[1vh_1vw_0] whitespace-nowrap"
         >
           {text}
@@ -85,8 +85,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
     <div
       className="
         flex-1 relative overflow-hidden text-center
-        shadow-[0_-1px_0_0_rgba(255,255,255,0.2)]
-        dark:shadow-[0_-1px_0_0_rgba(0,0,0,0.2)]
+        shadow-[0_-1px_0_0_rgba(0,0,0,0.2)]
       "
       ref={itemRef}
     >
@@ -94,11 +93,11 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
         className="
           flex items-center justify-center h-full relative cursor-pointer
           uppercase no-underline font-semibold
-          text-white dark:text-neutral-900
+          text-white
           text-[4vh]
-          hover:text-neutral-900 dark:hover:text-white
-          focus:text-white dark:focus:text-neutral-900
-          focus-visible:text-neutral-900 dark:focus-visible:text-white
+          hover:text-neutral-900
+          focus:text-white
+          focus-visible:text-neutral-900
         "
         href={link}
         onMouseEnter={handleMouseEnter}
@@ -109,7 +108,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
       <div
         className="
           absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none
-          bg-white dark:bg-neutral-900
+          bg-white
           translate-y-[101%]"
         ref={marqueeRef}
       >
@@ -131,7 +130,7 @@ export const FlowingMenu: React.FC<FlowingMenuProps> = ({ items = [] }) => {
   return (
     <div className="
       w-full h-full overflow-hidden
-      bg-neutral-900 dark:bg-white
+      bg-neutral-900
       transition-colors duration-300
       "
     >

@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 import { useEffect } from "react";
 
 export default function ServicesPage() {
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
 
   // The new component has its own light/dark mode styling which conflicts with the theme provider.
   // We'll force the light theme on this page for consistent styling.
