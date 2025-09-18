@@ -33,6 +33,26 @@ const slidesData = [
   },
 ];
 
+const contentParentVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      when: "beforeChildren",
+    },
+  },
+};
+
+const contentChildVariants = {
+    hidden: { y: "100%", opacity: 0 },
+    visible: {
+      y: "0%",
+      opacity: 1,
+      transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
+    },
+};
+
 interface SlideContentProps {
   index: number;
   slide: typeof slidesData[0];
@@ -45,16 +65,26 @@ const SlideContent: React.FC<SlideContentProps> = ({ index, slide, activeIndex }
   return (
     <motion.div
       className="absolute inset-0 flex flex-col justify-center"
-      initial={{ y: 100, opacity: 0 }}
-      animate={{ y: isActive ? 0 : 100, opacity: isActive ? 1 : 0 }}
-      transition={{ duration: isActive ? 0.4 : 0.2, ease: [0.4, 0, 0.2, 1], delay: isActive ? 0.1 : 0 }}
+      variants={contentParentVariants}
+      initial="hidden"
+      animate={isActive ? 'visible' : 'hidden'}
     >
-      <h2 className="text-5xl md:text-6xl font-bold tracking-tighter text-primary">{slide.title}</h2>
-      <p className="mt-6 text-lg md:text-xl max-w-md text-primary/80">{slide.description}</p>
-      <div className="mt-8">
-        <Button asChild size="lg">
-            <Link href="#cta">Get Started</Link>
-        </Button>
+      <div className="overflow-hidden">
+        <motion.h2 className="text-5xl md:text-6xl font-bold tracking-tighter text-primary" variants={contentChildVariants}>
+            {slide.title}
+        </motion.h2>
+      </div>
+      <div className="overflow-hidden mt-6">
+        <motion.p className="text-lg md:text-xl max-w-md text-primary/80" variants={contentChildVariants}>
+            {slide.description}
+        </motion.p>
+      </div>
+      <div className="overflow-hidden mt-8">
+        <motion.div variants={contentChildVariants}>
+            <Button asChild size="lg">
+                <Link href="#cta">Get Started</Link>
+            </Button>
+        </motion.div>
       </div>
     </motion.div>
   );
@@ -75,7 +105,7 @@ const SlideImage: React.FC<SlideImageProps> = ({ index, slide, activeIndex }) =>
       className="absolute inset-0 w-full h-full"
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 0.95 }}
-      transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1], delay: isActive ? 0.1 : 0 }}
+      transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
     >
       <img
         src={slide.image}
