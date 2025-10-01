@@ -69,7 +69,7 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "fixed bottom-6 sm:top-6 inset-x-0 w-full flex justify-center z-50 pointer-events-none",
+        "fixed bottom-6 sm:top-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none",
         className
       )}
     >
