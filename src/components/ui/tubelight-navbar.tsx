@@ -69,8 +69,8 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "fixed bottom-6 sm:top-6 left-0 right-0 z-50 flex justify-center",
-        className,
+        "fixed bottom-6 sm:top-6 left-1/2 -translate-x-1/2 z-50",
+        className
       )}
     >
       <div className="flex items-center gap-1 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">

@@ -13,7 +13,7 @@ import { ContactForm } from '@/components/sections/ContactForm';
 
 export default function CTA() {
   return (
-    <section id="cta" className="py-20 md:py-32 bg-background">
+    <section id="cta" className="py-20 md:py-32 bg-background isolate z-10 relative">
       <div className="container mx-auto px-4 md:px-6 text-center">
         <h2 className="font-headline text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter text-primary">
           Have a project in mind?
