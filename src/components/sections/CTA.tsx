@@ -27,7 +27,7 @@ export default function CTA() {
             <DialogTrigger asChild>
               <Button size="lg">Let's Talk</Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
+            <DialogContent className="sm:max-w-xl">
               <DialogHeader>
                 <DialogTitle>Contact Us</DialogTitle>
                 <DialogDescription>
