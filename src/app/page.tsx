@@ -21,9 +21,7 @@ export default function Home() {
           <Testimonials />
         </AnimateIn>
         <MovingText />
-        <AnimateIn>
-          <CTA />
-        </AnimateIn>
+        <CTA />
       </div>
     </>
   );
