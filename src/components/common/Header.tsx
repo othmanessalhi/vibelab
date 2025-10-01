@@ -1,6 +1,6 @@
 "use client";
 
-import { User, Briefcase, Archive, Cpu, Home, Quote, Mail, Settings, Moon, Sun } from 'lucide-react';
+import { User, Briefcase, Archive, Home, Quote, Mail, Settings, Moon, Sun, ChevronDown } from 'lucide-react';
 import { NavBar } from "@/components/ui/tubelight-navbar";
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -11,14 +11,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useTheme } from "next-themes"
+import { servicesData } from '@/lib/services-data';
 
 export default function Header() {
   const { setTheme } = useTheme();
 
   const navItems = [
-    { name: 'Home', url: '/#home', icon: Home },
+    { name: 'Home', url: '/', icon: Home },
     { name: 'About', url: '/#about', icon: User },
-    { name: 'Services', url: '/#services', icon: Briefcase },
+    { 
+      name: 'Services', 
+      icon: Briefcase,
+      isMenu: true,
+      items: servicesData.map(s => ({ name: s.title, url: s.link }))
+    },
     { name: 'Work', url: '/#work', icon: Archive },
     { name: 'Testimonials', url: '/#testimonials', icon: Quote },
     { name: 'Contact', url: '/contact', icon: Mail },
