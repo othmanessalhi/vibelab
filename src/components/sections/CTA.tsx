@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from '@/components/ui/button';
@@ -26,7 +27,7 @@ export default function CTA() {
             <DialogTrigger asChild>
               <Button size="lg">Let's Talk</Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-md">
               <DialogHeader>
                 <DialogTitle>Contact Us</DialogTitle>
                 <DialogDescription>
