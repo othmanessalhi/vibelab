@@ -12,26 +12,31 @@ import {
 } from '@/components/ui/table';
 import Link from 'next/link';
 
+type PricingTier = {
+    name: string;
+    price: string;
+    values: (string | boolean)[];
+}
+
 type Service = {
   title: string;
   slug: string;
   description: string;
   image: string;
   link: string;
+  pricing?: {
+    features: string[];
+    tiers: PricingTier[];
+  }
 };
 
 interface ServiceDetailsProps {
   service: Service;
 }
 
-const pricingTiers = [
-  { name: 'Basic', price: '$499/mo', features: [true, true, false, false] },
-  { name: 'Pro', price: '$999/mo', features: [true, true, true, false] },
-  { name: 'Enterprise', price: '$1,999/mo', features: [true, true, true, true] },
-];
-const pricingFeatures = ['Feature One', 'Feature Two', 'Feature Three', 'Advanced Feature'];
-
 export default function ServiceDetails({ service }: ServiceDetailsProps) {
+  const { pricing } = service;
+
   return (
     <main className="bg-background">
       <div className="relative h-[60vh] min-h-[400px]">
@@ -76,41 +81,47 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
                 </div>
               </div>
 
-              <div id="pricing">
-                <h2 className="text-3xl font-headline font-bold mb-6 text-primary">Pricing Plans</h2>
-                <div className="border rounded-lg overflow-hidden">
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead className="w-[200px]">Plan</TableHead>
-                                {pricingTiers.map(tier => <TableHead key={tier.name} className="text-center">{tier.name}</TableHead>)}
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {pricingFeatures.map((feature, index) => (
-                                <TableRow key={feature}>
-                                    <TableCell className="font-medium">{feature}</TableCell>
-                                    {pricingTiers.map(tier => (
-                                        <TableCell key={tier.name} className="text-center">
-                                            {tier.features[index] ? 
-                                                <CheckCircle className="h-5 w-5 text-green-500 mx-auto" /> : 
-                                                <XCircle className="h-5 w-5 text-muted-foreground mx-auto" />}
-                                        </TableCell>
-                                    ))}
-                                </TableRow>
-                            ))}
-                            <TableRow>
-                                <TableHead className="font-bold">Price</TableHead>
-                                {pricingTiers.map(tier => (
-                                    <TableCell key={tier.name} className="text-center font-bold text-lg">
-                                        {tier.price}
-                                    </TableCell>
-                                ))}
-                            </TableRow>
-                        </TableBody>
-                    </Table>
+              {pricing && (
+                <div id="pricing">
+                  <h2 className="text-3xl font-headline font-bold mb-6 text-primary">Pricing Plans</h2>
+                  <div className="border rounded-lg overflow-hidden">
+                      <Table>
+                          <TableHeader>
+                              <TableRow>
+                                  <TableHead className="w-[200px] font-bold">Features</TableHead>
+                                  {pricing.tiers.map(tier => <TableHead key={tier.name} className="text-center font-bold text-lg">{tier.name}</TableHead>)}
+                              </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                              {pricing.features.map((feature, index) => (
+                                  <TableRow key={feature}>
+                                      <TableCell className="font-medium">{feature}</TableCell>
+                                      {pricing.tiers.map(tier => (
+                                          <TableCell key={tier.name} className="text-center">
+                                              {typeof tier.values[index] === 'boolean' ? (
+                                                  tier.values[index] ? 
+                                                      <CheckCircle className="h-5 w-5 text-green-500 mx-auto" /> : 
+                                                      <XCircle className="h-5 w-5 text-muted-foreground mx-auto" />
+                                              ) : (
+                                                <span className="text-sm">{tier.values[index]}</span>
+                                              )}
+                                          </TableCell>
+                                      ))}
+                                  </TableRow>
+                              ))}
+                              <TableRow>
+                                  <TableHead className="font-bold">Price</TableHead>
+                                  {pricing.tiers.map(tier => (
+                                      <TableCell key={tier.name} className="text-center font-bold text-lg">
+                                          {tier.price}
+                                      </TableCell>
+                                  ))}
+                              </TableRow>
+                          </TableBody>
+                      </Table>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
             
             <aside className="md:col-span-1">
