@@ -1,6 +1,5 @@
 import Hero from "@/components/sections/Hero";
 import CaseStudies from "@/components/sections/CaseStudies";
-import AITool from "@/components/sections/AITool";
 import CTA from "@/components/sections/CTA";
 import AnimateIn from "@/components/common/AnimateIn";
 import WhoAreWe from "@/components/sections/WhoAreWe";
@@ -22,9 +21,6 @@ export default function Home() {
           <Testimonials />
         </AnimateIn>
         <MovingText />
-        <AnimateIn>
-          <AITool />
-        </AnimateIn>
         <AnimateIn>
           <CTA />
         </AnimateIn>
