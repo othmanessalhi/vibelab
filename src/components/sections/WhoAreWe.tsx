@@ -13,23 +13,21 @@ function WhoAreWeInternal() {
           </PointerHighlight>
         </h2>
       <div className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto text-center">
-        Check out{" "}
+        Dive into{" "}
         <LinkPreview
-            url="https://google.com"
+            url="/#work"
             className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-accent/70 to-accent"
         >
             our portfolio
         </LinkPreview>{" "}
-        to see some of our favorite projects. We get inspired by the work of others, like the folks behind{" "}
+        to witness the success stories we've crafted, and explore{" "}
         <LinkPreview
-            url="https://github.com/firebase/genkit"
-            imageSrc="https://avatars.githubusercontent.com/u/1335026?s=200&v=4"
-            isStatic
+            url="/#services"
             className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-accent/70 to-accent"
         >
-            Genkit
+            our services
         </LinkPreview>
-        .
+        {" "}to see how we can elevate your brand. We are driven by creativity and results, turning bold ideas into tangible success.
       </div>
     </div>
   );
