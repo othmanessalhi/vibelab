@@ -11,18 +11,16 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div className="bg-background">
-        <WhoAreWe />
-        <Services />
-        <AnimateIn>
-          <CaseStudies />
-        </AnimateIn>
-        <AnimateIn>
-          <Testimonials />
-        </AnimateIn>
-        <MovingText />
-        <CTA />
-      </div>
+      <WhoAreWe />
+      <Services />
+      <AnimateIn>
+        <CaseStudies />
+      </AnimateIn>
+      <AnimateIn>
+        <Testimonials />
+      </AnimateIn>
+      <MovingText />
+      <CTA />
     </>
   );
 }
