@@ -118,7 +118,7 @@ I'm interested in your services. Here are my details:
           render={() => (
             <FormItem>
               <FormLabel className="font-headline">Services of Interest</FormLabel>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 pt-2">
               {servicesData.map((item) => (
                 <FormField
                   key={item.title}
@@ -199,7 +199,7 @@ I'm interested in your services. Here are my details:
             </FormItem>
           )}
         />
-        <Button type="submit" disabled={isLoading} className="w-full">
+        <Button type="submit" disabled={isLoading} className="w-full !mt-6">
           {isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
