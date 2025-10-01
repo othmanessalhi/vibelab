@@ -43,12 +43,12 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-black/50" />
         <div className="container mx-auto px-4 md:px-6 relative h-full flex flex-col justify-end pb-12 md:pb-20">
-          <h1 className="font-headline text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter text-primary-foreground">
+          <h1 className="font-headline text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter text-white">
             {service.title}
           </h1>
-          <p className="mt-4 max-w-3xl text-lg md:text-xl text-primary-foreground/80">
+          <p className="mt-4 max-w-3xl text-lg md:text-xl text-white/80">
             {service.description}
           </p>
         </div>
