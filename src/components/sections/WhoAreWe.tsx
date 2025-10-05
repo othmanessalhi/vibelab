@@ -6,7 +6,7 @@ import { PointerHighlight } from "@/components/ui/pointer-highlight";
 function WhoAreWeInternal() {
   return (
     <div className="flex flex-col gap-8 rounded-sm bg-background px-8 py-4 items-center">
-       <h2 className="text-3xl font-bold tracking-tight text-center md:text-5xl">
+       <h2 className="text-3xl font-bold tracking-tight text-center md:text-4xl">
           We are a creative agency that loves building
           <PointerHighlight>
             <span className="text-accent"> amazing things</span>

@@ -46,7 +46,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
-        className="text-xl md:text-3xl font-semibold text-primary mt-12"
+        className="text-lg md:text-2xl font-semibold text-primary mt-12"
       >
         Morocco’s Experts in Website Solutions & Video Production for Businesses
       </motion.h2>
@@ -88,4 +88,5 @@ export default function Hero() {
     </div>
   );
 }
+
 
