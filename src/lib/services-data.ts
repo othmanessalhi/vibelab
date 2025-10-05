@@ -45,7 +45,7 @@ export const servicesData = [
     title: "Drone Videography",
     slug: "drone-videography",
     description: "Capture breathtaking aerial perspectives and cinematic footage that will elevate your brand's storytelling and leave a lasting impression.",
-    image: "https://images.unsplash.com/photo-1508444845599-5c89863b1c44?q=80&w=2680&auto=format&fit=crop",
+    image: "/images/Generated Image October 05, 2025 - 6_08PM (1).png",
     link: "/services/drone-videography",
     pricing: {
         features: [
