@@ -1,5 +1,3 @@
-
-
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -8,8 +6,6 @@ import Footer from '@/components/common/Footer';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/common/ThemeProvider';
 import Analytics from '@/components/common/Analytics';
-import { servicesData } from '@/lib/services-data';
-import { Suspense } from 'react';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -50,54 +46,6 @@ export const metadata: Metadata = {
   },
 };
 
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Social Vibe",
-  "image": `${siteUrl}/og-image.webp`,
-  "@id": siteUrl,
-  "url": siteUrl,
-  "telephone": "+212-602-654321", // Example phone
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "123 Creative Lane",
-    "addressLocality": "Agadir",
-    "postalCode": "80000",
-    "addressCountry": "MA"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 30.427755, // Example coordinates for Agadir
-    "longitude": -9.598107
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday"
-    ],
-    "opens": "09:00",
-    "closes": "18:00"
-  },
-  "sameAs": [
-    "https://twitter.com/yourprofile",
-    "https://instagram.com/socialvibe.wavy",
-    "https://linkedin.com/company/yourprofile"
-  ],
-  "priceRange": "$$",
-  "description": "A premier digital marketing and web design agency based in Agadir, Morocco.",
-  "service": servicesData.map(service => ({
-    "@type": "Service",
-    "name": service.title,
-    "description": service.description,
-    "url": `${siteUrl}${service.link}`
-  }))
-};
-
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -105,13 +53,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`} suppressHydrationWarning>
-       <head>
-        <meta name="google-site-verification" content="r2hBnB-SpGb4Stmn6N2j2gSKh5nOzd8gQ4p0oDSMhks" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-        />
-      </head>
       <body className="font-body antialiased bg-background">
         <ThemeProvider
           attribute="class"
