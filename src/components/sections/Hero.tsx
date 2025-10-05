@@ -8,13 +8,13 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   const headlines = [
-    "Your Brand is Invisible.",
-    "Lost in the Digital Noise.",
-    "Opportunities Pass You By.",
-    "But Great Stories Resonate.",
-    "We Craft Authentic Connections.",
-    "Turning Clicks into Clients.",
-    "Social Vibe Sees What's Next."
+    "Your Website Feels Stale.",
+    "Your Content Gets Ignored.",
+    "Your Competitors Pull Ahead.",
+    "It's Time for a New Vibe.",
+    "We Build Digital Experiences.",
+    "We Create Stories That Stick.",
+    "Let's Grow Your Brand."
   ];
 
   const heroImage = {
@@ -29,7 +29,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
-        className="h-24 mt-12 mb-12"
+        className="h-24 mt-20 mb-16 md:mb-20"
       >
         <GooeyText
           texts={headlines}
@@ -43,7 +43,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
-        className="text-lg md:text-2xl font-semibold text-primary mt-12"
+        className="text-lg md:text-xl font-semibold text-primary"
       >
         Website Solutions & Video Production Experts in Morocco
       </motion.h2>
