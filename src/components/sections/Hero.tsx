@@ -51,27 +51,6 @@ export default function Hero() {
       >
         Morocco’s Experts in Website Solutions & Video Production for Businesses
       </motion.h2>
-       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeInOut", delay: 0.4 }}
-        className="mt-12"
-      >
-        <Link href="/contact" className="inline-block">
-          <TextRotate
-            texts={["Let's Create", "Get a Quote", "Start Now"]}
-            mainClassName="text-accent-foreground px-6 py-3 bg-accent overflow-hidden justify-center rounded-md text-lg font-bold"
-            staggerFrom={"last"}
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "-120%" }}
-            staggerDuration={0.025}
-            splitLevelClassName="overflow-hidden pb-0.5"
-            transition={{ type: "spring", damping: 30, stiffness: 400 }}
-            rotationInterval={2000}
-          />
-        </Link>
-      </motion.div>
     </>
   );
 
