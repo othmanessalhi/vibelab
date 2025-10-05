@@ -60,7 +60,7 @@ export const Header = ({ translate, titleComponent }: any) => {
       style={{
         translateY: translate,
       }}
-      className="div max-w-5xl mx-auto text-center"
+      className="div max-w-5xl mx-auto text-center pt-[10vh] md:pt-0"
     >
       {titleComponent}
     </motion.div>
@@ -79,9 +79,6 @@ export const Card = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6, ease: "easeInOut", delay: 0.4 }}
       style={{
         rotateX: rotate,
         scale,
