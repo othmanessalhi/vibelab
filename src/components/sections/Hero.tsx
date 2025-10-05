@@ -29,7 +29,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
-        className="h-24 mt-8 mb-2 md:mt-20 md:mb-16"
+        className="h-24 mt-8 mb-8 md:mt-20 md:mb-16"
       >
         <GooeyText
           texts={headlines}
