@@ -4,6 +4,7 @@ import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 import Image from "next/image";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   const headlines = [
@@ -25,7 +26,12 @@ export default function Hero() {
 
   const titleComponent = (
     <>
-      <div className="h-24">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+        className="h-24"
+      >
         <GooeyText
           texts={headlines}
           morphTime={2}
@@ -33,10 +39,15 @@ export default function Hero() {
           className="font-bold"
           textClassName="text-4xl md:text-[6rem] mt-12 md:mt-1 leading-none"
         />
-      </div>
-      <h2 className="text-2xl md:text-3xl font-semibold text-primary mt-8">
+      </motion.div>
+      <motion.h2 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
+        className="text-2xl md:text-3xl font-semibold text-primary mt-8"
+      >
         Morocco’s Experts in Website Solutions & Video Production for Businesses
-      </h2>
+      </motion.h2>
     </>
   );
 
