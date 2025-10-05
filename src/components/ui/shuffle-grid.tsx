@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Button } from "./button";
+import { TextRotate } from "./text-rotate";
 
 export const ShuffleHero = () => {
   return (
@@ -46,11 +47,20 @@ export const ShuffleHero = () => {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <Button asChild size="lg">
-            <Link href="/#work">
-              See Our Work
-            </Link>
-          </Button>
+          <Link href="/contact" className="inline-block">
+            <TextRotate
+                texts={["Let's Talk", "Get a Quote", "Start a Project"]}
+                mainClassName="text-accent-foreground px-4 py-2 bg-accent overflow-hidden justify-center rounded-md text-base font-medium"
+                staggerFrom={"last"}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                splitLevelClassName="overflow-hidden pb-0.5"
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={2000}
+              />
+          </Link>
         </motion.div>
       </div>
       <ShuffleGrid />
