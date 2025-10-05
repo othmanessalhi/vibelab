@@ -25,7 +25,7 @@ export const servicesData = [
     title: "Paid Advertising",
     slug: "paid-advertising",
     description: "Harness the power of data-driven paid advertising campaigns across all major platforms to maximize your reach, conversions, and ROI.",
-    image: "https://images.unsplash.com/photo-1599658880436-c61792e70672?q=80&w=2612&auto=format&fit=crop",
+    image: "/images/Generated Image October 05, 2025 - 5_58PM.png",
     link: "/services/paid-advertising",
     pricing: {
         features: [
