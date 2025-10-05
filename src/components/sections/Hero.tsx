@@ -29,7 +29,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
-        className="h-24 mt-20 mb-8 md:mt-40 md:mb-16"
+        className="h-24 mt-8 mb-4 md:mt-40 md:mb-16"
       >
         <GooeyText
           texts={headlines}
@@ -43,7 +43,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
-        className="text-base md:text-2xl font-semibold text-primary mt-4"
+        className="text-base md:text-2xl font-semibold text-primary"
       >
         Website Solutions & Video Production Experts in Morocco
       </motion.h2>
