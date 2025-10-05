@@ -5,8 +5,6 @@ import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import Image from "next/image";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
 import { motion } from "framer-motion";
-import { TextRotate } from "@/components/ui/text-rotate";
-import Link from "next/link";
 
 export default function Hero() {
   const headlines = [
@@ -48,7 +46,7 @@ export default function Hero() {
         transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
         className="text-lg md:text-2xl font-semibold text-primary mt-12"
       >
-        Morocco’s Experts in Website Solutions & Video Production for Businesses
+        Website Solutions & Video Production Experts in Morocco
       </motion.h2>
     </>
   );
@@ -88,5 +86,3 @@ export default function Hero() {
     </div>
   );
 }
-
-
