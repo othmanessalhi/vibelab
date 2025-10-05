@@ -67,10 +67,7 @@ export default function Hero() {
       <ContainerScroll
         titleComponent={titleComponent}
       >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut", delay: 0.4 }}
+        <div
           className="w-full h-full"
         >
         {heroImage && (
@@ -84,7 +81,7 @@ export default function Hero() {
             priority
           />
         )}
-        </motion.div>
+        </div>
       </ContainerScroll>
       <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </div>
