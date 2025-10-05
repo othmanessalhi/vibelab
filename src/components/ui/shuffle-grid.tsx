@@ -1,3 +1,4 @@
+
 "use client"
 
 import { motion } from "framer-motion";
@@ -50,7 +51,7 @@ export const ShuffleHero = () => {
           <Link href="/contact" className="inline-block">
             <TextRotate
                 texts={["Let's Talk", "Get a Quote", "Start a Project"]}
-                mainClassName="text-accent-foreground px-4 py-2 bg-accent overflow-hidden justify-center rounded-md text-base font-medium"
+                mainClassName="text-accent-foreground px-4 py-2 bg-accent overflow-hidden justify-center rounded-md text-base font-bold"
                 staggerFrom={"last"}
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}

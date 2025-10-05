@@ -6,6 +6,8 @@ import { BackgroundPaths } from "@/components/ui/background-paths";
 import Image from "next/image";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
 import { motion } from "framer-motion";
+import { TextRotate } from "@/components/ui/text-rotate";
+import Link from "next/link";
 
 export default function Hero() {
   const headlines = [
@@ -45,10 +47,31 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
-        className="text-xl md:text-3xl font-semibold text-primary mt-8"
+        className="text-xl md:text-3xl font-semibold text-primary mt-12"
       >
         Morocco’s Experts in Website Solutions & Video Production for Businesses
       </motion.h2>
+       <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeInOut", delay: 0.4 }}
+        className="mt-12"
+      >
+        <Link href="/contact" className="inline-block">
+          <TextRotate
+            texts={["Let's Create", "Get a Quote", "Start Now"]}
+            mainClassName="text-accent-foreground px-6 py-3 bg-accent overflow-hidden justify-center rounded-md text-lg font-bold"
+            staggerFrom={"last"}
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-120%" }}
+            staggerDuration={0.025}
+            splitLevelClassName="overflow-hidden pb-0.5"
+            transition={{ type: "spring", damping: 30, stiffness: 400 }}
+            rotationInterval={2000}
+          />
+        </Link>
+      </motion.div>
     </>
   );
 
