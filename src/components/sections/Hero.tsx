@@ -19,7 +19,7 @@ export default function Hero() {
 
   const heroImage = {
     imageUrl: "/images/230327_r42093web-story.webp",
-    description: "Hero image for VibeLab.",
+    description: "Animated dashboard showcasing VibeLab's digital marketing results and web design projects.",
     imageHint: "abstract design"
   };
 

@@ -6,8 +6,12 @@ import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/common/ThemeProvider';
 
 export const metadata: Metadata = {
-  title: 'VibeLab',
-  description: 'We grow brands with social media & content.',
+  title: {
+    default: 'VibeLab | Digital Marketing & Web Design Agency in Agadir, Morocco',
+    template: '%s | VibeLab',
+  },
+  description: 'VibeLab is a creative agency in Agadir, Morocco, specializing in web design, web development, social media management, and video production. We grow brands with cutting-edge content and strategy.',
+  keywords: ['Website design Morocco', 'Web development Agadir', 'Social media management Morocco', 'Video production Agadir', 'Drone videography Morocco', 'Digital marketing agency Agadir'],
 };
 
 export default function RootLayout({
