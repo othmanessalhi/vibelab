@@ -24,15 +24,20 @@ export default function Hero() {
   };
 
   const titleComponent = (
-    <div className="h-24">
-      <GooeyText
-        texts={headlines}
-        morphTime={2}
-        cooldownTime={0.4}
-        className="font-bold"
-        textClassName="text-4xl md:text-[6rem] mt-12 md:mt-1 leading-none"
-      />
-    </div>
+    <>
+      <div className="h-24">
+        <GooeyText
+          texts={headlines}
+          morphTime={2}
+          cooldownTime={0.4}
+          className="font-bold"
+          textClassName="text-4xl md:text-[6rem] mt-12 md:mt-1 leading-none"
+        />
+      </div>
+      <h2 className="text-2xl md:text-3xl font-semibold text-primary mt-8">
+        Digital Marketing, Website Design & Web Development in Agadir, Morocco
+      </h2>
+    </>
   );
 
   return (
