@@ -33,8 +33,8 @@ export default function Hero() {
       >
         <GooeyText
           texts={headlines}
-          morphTime={2}
-          cooldownTime={0.4}
+          morphTime={1.5}
+          cooldownTime={0.8}
           className="font-bold"
           textClassName="text-5xl md:text-[6rem] mt-12 md:mt-1 leading-none"
         />
