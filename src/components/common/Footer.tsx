@@ -7,10 +7,10 @@ export default function Footer() {
       <div className="container mx-auto px-4 md:px-6 py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <Link href="/" className="text-2xl font-bold font-headline text-primary">
-            VibeLab
+            Social Vibe
           </Link>
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} VibeLab. All rights reserved.
+            &copy; {new Date().getFullYear()} Social Vibe. All rights reserved.
           </p>
           <div className="flex gap-4">
             <Link href="#" aria-label="Twitter">

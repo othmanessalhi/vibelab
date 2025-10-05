@@ -14,12 +14,12 @@ export default function Hero() {
     "Let's Change That.",
     "The Attention You Deserve.",
     "Unlock Your True Potential.",
-    "VibeLab Sees What's Next."
+    "Social Vibe Sees What's Next."
   ];
 
   const heroImage = {
     imageUrl: "/images/230327_r42093web-story.webp",
-    description: "Animated dashboard showcasing VibeLab's digital marketing results and web design projects.",
+    description: "Animated dashboard showcasing Social Vibe's digital marketing results and web design projects.",
     imageHint: "abstract design"
   };
 

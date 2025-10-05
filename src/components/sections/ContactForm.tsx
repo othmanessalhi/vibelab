@@ -48,7 +48,7 @@ export function ContactForm() {
     const whatsappNumber = "212602654219";
     const interestedServices = data.services.join(", ");
     
-    const messageText = `Hello VibeLab,
+    const messageText = `Hello Social Vibe,
 
 I'm interested in your services. Here are my details:
 *Name:* ${data.name}
