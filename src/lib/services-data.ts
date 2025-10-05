@@ -85,7 +85,7 @@ export const servicesData = [
     title: "Video Production",
     slug: "video-production",
     description: "From concept to final cut, our team produces high-quality video content that tells your story, engages your audience, and drives results.",
-    image: "https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=1974&auto=format&fit=crop",
+    image: "/images/Generated Image October 05, 2025 - 7_22PM.png",
     link: "/services/video-production",
     pricing: {
         features: [
