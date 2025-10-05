@@ -2,14 +2,6 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, XCircle } from 'lucide-react';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
 import Link from 'next/link';
 
 type PricingTier = {
@@ -39,7 +31,7 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
 
   return (
     <main className="bg-background">
-      <div className="relative h-[60vh] min-h-[400px]">
+      <div className="relative h-[50vh] min-h-[350px] md:h-[60vh] md:min-h-[400px]">
         <Image
           src={service.image}
           alt={service.title}
@@ -49,8 +41,8 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
         <div className="absolute inset-0 bg-black/50" />
-        <div className="container mx-auto px-4 md:px-6 relative h-full flex flex-col justify-end pb-12 md:pb-20">
-          <h1 className="font-headline text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter text-white">
+        <div className="container mx-auto px-4 md:px-6 relative h-full flex flex-col justify-end pb-8 md:pb-20">
+          <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-white">
             {service.title}
           </h1>
           <p className="mt-4 max-w-3xl text-md md:text-xl text-white/80">
@@ -59,7 +51,7 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
         </div>
       </div>
 
-      <div className="py-16 md:py-24">
+      <div className="py-12 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
             <div className="flex-1 space-y-12">
@@ -85,17 +77,17 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
                 <div id="pricing">
                   <h2 className="text-2xl md:text-3xl font-headline font-bold mb-6 text-primary">Pricing Plans</h2>
                   
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
                     {pricing.tiers.map((tier, tierIndex) => (
                       <div key={tier.name} 
-                           className={`border rounded-xl p-6 flex flex-col shadow-lg transition-transform duration-300 hover:scale-105 ${
-                            tierIndex === 1 ? 'border-primary bg-secondary/50 scale-100 lg:scale-105' : 'bg-secondary/30'
+                           className={`border rounded-xl p-6 flex flex-col shadow-lg transition-transform duration-300 hover:scale-105 h-full ${
+                            tierIndex === 1 ? 'border-primary bg-secondary/50 transform md:scale-105' : 'bg-secondary/30'
                            }`}
                       >
                         <div className="flex-grow">
                           <h3 className="text-xl font-headline font-bold text-primary">{tier.name}</h3>
-                          <p className="text-3xl font-bold my-4">{tier.price}</p>
-                          <ul className="space-y-4 mt-6 text-left">
+                          <p className="text-3xl font-bold my-4 text-primary">{tier.price}</p>
+                          <ul className="space-y-4 mt-6 text-left text-sm">
                             {pricing.features.map((feature, index) => (
                               <li key={feature} className="flex items-start gap-3">
                                 {typeof tier.values[index] === 'boolean' ? (
@@ -106,7 +98,7 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
                                   <CheckCircle className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
                                 )}
                                 <div>
-                                  <span className="font-medium text-sm">{feature}</span>
+                                  <span className="font-medium text-primary/90">{feature}</span>
                                   {typeof tier.values[index] !== 'boolean' && (
                                     <p className="text-sm text-muted-foreground">{tier.values[index]}</p>
                                   )}
@@ -115,7 +107,7 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
                             ))}
                           </ul>
                         </div>
-                        <Button size="lg" className="w-full mt-8" variant={tierIndex === 1 ? 'default' : 'outline'}>
+                        <Button asChild size="lg" className="w-full mt-8" variant={tierIndex === 1 ? 'default' : 'outline'}>
                           <Link href="/contact">Choose Plan</Link>
                         </Button>
                       </div>
@@ -126,8 +118,8 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
               )}
             </div>
             
-            <aside className="w-full lg:w-1/4">
-              <div className="sticky top-28 bg-secondary/50 p-6 rounded-lg">
+            <aside className="w-full lg:w-1/4 lg:sticky top-28 h-fit">
+              <div className="bg-secondary/50 p-6 rounded-lg">
                 <h3 className="text-xl font-headline font-bold mb-4 text-primary">Ready to Start?</h3>
                 <p className="text-primary/70 mb-6">
                   Let's discuss how our {service.title} service can help you achieve your goals.
