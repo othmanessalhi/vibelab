@@ -29,21 +29,21 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
-        className="h-24 mt-20 mb-16 md:mb-20"
+        className="h-24 mt-8 mb-4 md:mt-20 md:mb-16"
       >
         <GooeyText
           texts={headlines}
           morphTime={0.8}
           cooldownTime={1}
           className="font-bold"
-          textClassName="text-5xl md:text-[6rem] mt-12 md:mt-1 leading-none"
+          textClassName="text-4xl md:text-[6rem] leading-none"
         />
       </motion.div>
       <motion.h2 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
-        className="text-lg md:text-2xl font-semibold text-primary mt-12"
+        className="text-base md:text-2xl font-semibold text-primary mt-4"
       >
         Website Solutions & Video Production Experts in Morocco
       </motion.h2>
