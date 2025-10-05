@@ -85,6 +85,24 @@
   }
 }
 
+@layer components {
+  .glowing-input {
+    @apply transition-all duration-300;
+  }
+  .glowing-input:focus {
+    @apply ring-2 ring-accent/50 ring-offset-2 ring-offset-background;
+    box-shadow: 0 0 15px hsl(var(--accent) / 0.3);
+  }
+
+  .glowing-button {
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+
+  .glowing-button:focus, .glowing-button:hover {
+     box-shadow: 0 0 20px hsl(var(--accent) / 0.5);
+  }
+}
+
 @keyframes marqueeScroll {
   0% {
     transform: translateX(0%);
