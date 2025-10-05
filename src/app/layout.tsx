@@ -9,6 +9,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/common/ThemeProvider';
 import Analytics from '@/components/common/Analytics';
 import { servicesData } from '@/lib/services-data';
+import { Suspense } from 'react';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -88,7 +89,6 @@ const localBusinessSchema = {
   ],
   "priceRange": "$$",
   "description": "A premier digital marketing and web design agency based in Agadir, Morocco.",
-  "servesCuisine": "", // Not applicable
   "service": servicesData.map(service => ({
     "@type": "Service",
     "name": service.title,
@@ -124,7 +124,9 @@ export default function RootLayout({
           <Footer />
           <Toaster />
         </ThemeProvider>
-        <Analytics />
+        <Suspense>
+          <Analytics />
+        </Suspense>
       </body>
     </html>
   );
