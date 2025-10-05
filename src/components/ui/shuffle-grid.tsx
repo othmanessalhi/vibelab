@@ -132,7 +132,7 @@ const generateSquares = () => {
 
 const ShuffleGrid = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const [squares, setSquares] = useState(generateSquares());
+  const [squares, setSquares] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
     const shuffleSquares = () => {
