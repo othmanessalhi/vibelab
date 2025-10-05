@@ -17,7 +17,7 @@ export default function Footer() {
             <Link href="#" aria-label="Twitter">
               <Twitter className="h-6 w-6 text-muted-foreground transition-colors hover:text-accent" />
             </Link>
-            <Link href="#" aria-label="Instagram">
+            <Link href="https://instagram.com/socialvibe.wavy" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
               <Instagram className="h-6 w-6 text-muted-foreground transition-colors hover:text-accent" />
             </Link>
             <Link href="#" aria-label="LinkedIn">

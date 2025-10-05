@@ -84,7 +84,7 @@ const localBusinessSchema = {
   },
   "sameAs": [
     "https://twitter.com/yourprofile",
-    "https://instagram.com/yourprofile",
+    "https://instagram.com/socialvibe.wavy",
     "https://linkedin.com/company/yourprofile"
   ],
   "priceRange": "$$",
