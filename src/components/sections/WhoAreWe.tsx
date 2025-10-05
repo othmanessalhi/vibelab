@@ -6,12 +6,12 @@ import { PointerHighlight } from "@/components/ui/pointer-highlight";
 function WhoAreWeInternal() {
   return (
     <div className="flex flex-col gap-8 rounded-sm bg-background px-8 py-4 items-center">
-       <h2 className="text-2xl font-bold tracking-tight text-center md:text-4xl">
-          We are a creative agency that loves building
+       <div className="text-2xl font-bold tracking-tight text-center md:text-4xl">
+          <div>We are a creative agency that loves building</div>
           <PointerHighlight>
-            <span className="text-accent"> amazing things</span>
+            <span className="text-accent">amazing things</span>
           </PointerHighlight>
-        </h2>
+        </div>
       <div className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto text-center">
         Dive into{" "}
         <LinkPreview
