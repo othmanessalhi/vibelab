@@ -85,72 +85,43 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
                 <div id="pricing">
                   <h2 className="text-2xl md:text-3xl font-headline font-bold mb-6 text-primary">Pricing Plans</h2>
                   
-                  {/* Mobile Pricing View */}
-                  <div className="space-y-6 md:hidden">
-                    {pricing.tiers.map(tier => (
-                      <div key={tier.name} className="border rounded-lg p-6 bg-secondary/30">
-                        <h3 className="text-xl font-headline font-bold text-primary">{tier.name}</h3>
-                        <p className="text-2xl font-bold my-2">{tier.price}</p>
-                        <ul className="space-y-3 mt-4">
-                          {pricing.features.map((feature, index) => (
-                            <li key={feature} className="flex items-center gap-3">
-                              {typeof tier.values[index] === 'boolean' ? (
-                                tier.values[index] ? 
-                                    <CheckCircle className="h-5 w-5 text-green-500 shrink-0" /> : 
-                                    <XCircle className="h-5 w-5 text-muted-foreground shrink-0" />
-                              ) : (
-                                <CheckCircle className="h-5 w-5 text-green-500 shrink-0" />
-                              )}
-                              <div>
-                                <span className="font-medium text-sm">{feature}:</span>
-                                {typeof tier.values[index] !== 'boolean' && (
-                                  <p className="text-sm text-muted-foreground">{tier.values[index]}</p>
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    {pricing.tiers.map((tier, tierIndex) => (
+                      <div key={tier.name} 
+                           className={`border rounded-xl p-6 flex flex-col shadow-lg transition-transform duration-300 hover:scale-105 ${
+                            tierIndex === 1 ? 'border-primary bg-secondary/50 scale-100 lg:scale-105' : 'bg-secondary/30'
+                           }`}
+                      >
+                        <div className="flex-grow">
+                          <h3 className="text-xl font-headline font-bold text-primary">{tier.name}</h3>
+                          <p className="text-3xl font-bold my-4">{tier.price}</p>
+                          <ul className="space-y-4 mt-6 text-left">
+                            {pricing.features.map((feature, index) => (
+                              <li key={feature} className="flex items-start gap-3">
+                                {typeof tier.values[index] === 'boolean' ? (
+                                  tier.values[index] ? 
+                                      <CheckCircle className="h-5 w-5 text-green-500 shrink-0 mt-0.5" /> : 
+                                      <XCircle className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+                                ) : (
+                                  <CheckCircle className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
                                 )}
-                              </div>
-                            </li>
-                          ))}
-                        </ul>
+                                <div>
+                                  <span className="font-medium text-sm">{feature}</span>
+                                  {typeof tier.values[index] !== 'boolean' && (
+                                    <p className="text-sm text-muted-foreground">{tier.values[index]}</p>
+                                  )}
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <Button size="lg" className="w-full mt-8" variant={tierIndex === 1 ? 'default' : 'outline'}>
+                          <Link href="/contact">Choose Plan</Link>
+                        </Button>
                       </div>
                     ))}
                   </div>
 
-                  {/* Desktop Pricing View */}
-                  <div className="border rounded-lg overflow-hidden hidden md:block">
-                      <Table>
-                          <TableHeader>
-                              <TableRow>
-                                  <TableHead className="w-[200px] font-bold text-sm">Features</TableHead>
-                                  {pricing.tiers.map(tier => <TableHead key={tier.name} className="text-center font-bold text-sm">{tier.name}</TableHead>)}
-                              </TableRow>
-                          </TableHeader>
-                          <TableBody>
-                              {pricing.features.map((feature, index) => (
-                                  <TableRow key={feature}>
-                                      <TableCell className="font-medium text-sm">{feature}</TableCell>
-                                      {pricing.tiers.map(tier => (
-                                          <TableCell key={tier.name} className="text-center">
-                                              {typeof tier.values[index] === 'boolean' ? (
-                                                  tier.values[index] ? 
-                                                      <CheckCircle className="h-5 w-5 text-green-500 mx-auto" /> : 
-                                                      <XCircle className="h-5 w-5 text-muted-foreground mx-auto" />
-                                              ) : (
-                                                <span className="text-sm">{tier.values[index]}</span>
-                                              )}
-                                          </TableCell>
-                                      ))}
-                                  </TableRow>
-                              ))}
-                              <TableRow className="bg-secondary/30">
-                                  <TableHead className="font-bold text-sm">Price</TableHead>
-                                  {pricing.tiers.map(tier => (
-                                      <TableCell key={tier.name} className="text-center font-bold text-lg">
-                                          {tier.price}
-                                      </TableCell>
-                                  ))}
-                              </TableRow>
-                          </TableBody>
-                      </Table>
-                  </div>
                 </div>
               )}
             </div>
