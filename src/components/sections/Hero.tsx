@@ -2,7 +2,6 @@
 "use client";
 import React from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-import { BackgroundPaths } from "@/components/ui/background-paths";
 import Image from "next/image";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
 import { motion } from "framer-motion";
@@ -33,7 +32,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
-        className="h-24"
+        className="h-24 mt-12"
       >
         <GooeyText
           texts={headlines}
@@ -65,7 +64,7 @@ export default function Hero() {
         }}
       >
       </div>
-      <BackgroundPaths />
+      <div className="absolute inset-0 -z-10 h-full w-full bg-background" />
       <ContainerScroll
         titleComponent={titleComponent}
       >
@@ -89,3 +88,4 @@ export default function Hero() {
     </div>
   );
 }
+
