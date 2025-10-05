@@ -41,7 +41,7 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
 
   return (
     <main className="bg-background">
-      <div className="relative h-[40vh] min-h-[300px] md:h-[50vh] md:min-h-[400px]">
+      <div className="relative h-[60vh] min-h-[400px]">
         <Image
           src={service.image}
           alt={service.title}
@@ -51,8 +51,8 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
         <div className="absolute inset-0 bg-black/50" />
-        <div className="container mx-auto px-4 md:px-6 relative h-full flex flex-col justify-end pb-8 md:pb-12">
-          <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter text-white">
+        <div className="container mx-auto px-4 md:px-6 relative h-full flex flex-col justify-end pb-12 md:pb-20">
+          <h1 className="font-headline text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter text-white">
             {service.title}
           </h1>
           <p className="mt-2 md:mt-4 max-w-3xl text-md md:text-lg text-white/80">
@@ -61,7 +61,7 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
         </div>
       </div>
 
-      <div className="py-12 md:py-16">
+      <div className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
             <div className="flex-1 space-y-12">
@@ -117,8 +117,8 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
                             ))}
                           </ul>
                         </div>
-                        <Button asChild size="lg" className="w-full mt-8" variant={tierIndex === 1 ? 'default' : 'outline'}>
-                          <Link href={`/contact?service=${encodeURIComponent(service.title)}&budget=${encodeURIComponent(tier.price)}`}>Choose Plan</Link>
+                        <Button size="lg" className="w-full mt-8" variant={tierIndex === 1 ? 'default' : 'outline'}>
+                          <Link href="/contact">Choose Plan</Link>
                         </Button>
                       </div>
                     ))}
