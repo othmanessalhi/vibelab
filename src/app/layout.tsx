@@ -124,7 +124,7 @@ export default function RootLayout({
           <Footer />
           <Toaster />
         </ThemeProvider>
-        <Suspense>
+        <Suspense fallback={null}>
           <Analytics />
         </Suspense>
       </body>
