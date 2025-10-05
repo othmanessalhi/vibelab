@@ -64,7 +64,7 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
           <div className="grid md:grid-cols-3 gap-12">
             <div className="md:col-span-2 space-y-8">
               <div id="details">
-                <h2 className="text-3xl font-headline font-bold mb-6 text-primary">Service Details</h2>
+                <h2 className="text-2xl font-headline font-bold mb-6 text-primary">Service Details</h2>
                 <div className="prose prose-lg dark:prose-invert max-w-none text-primary/80 space-y-4">
                   <p>
                     Dive deep into what makes our {service.title} offering exceptional. We provide a comprehensive suite of solutions designed to elevate your brand and deliver measurable results. Our approach combines cutting-edge technology with creative strategies to ensure your business stands out.
@@ -83,7 +83,7 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
 
               {pricing && (
                 <div id="pricing">
-                  <h2 className="text-3xl font-headline font-bold mb-6 text-primary">Pricing Plans</h2>
+                  <h2 className="text-2xl font-headline font-bold mb-6 text-primary">Pricing Plans</h2>
                   <div className="border rounded-lg overflow-hidden">
                       <Table>
                           <TableHeader>

@@ -33,8 +33,8 @@ export default function Hero() {
       >
         <GooeyText
           texts={headlines}
-          morphTime={1.5}
-          cooldownTime={0.8}
+          morphTime={2}
+          cooldownTime={0.4}
           className="font-bold"
           textClassName="text-5xl md:text-[6rem] mt-12 md:mt-1 leading-none"
         />
@@ -43,7 +43,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
-        className="text-lg md:text-xl font-semibold text-primary"
+        className="text-xl md:text-3xl font-semibold text-primary mt-12"
       >
         Website Solutions & Video Production Experts in Morocco
       </motion.h2>
