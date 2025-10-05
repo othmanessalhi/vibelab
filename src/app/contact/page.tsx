@@ -1,7 +1,16 @@
 
 import { ContactForm } from '@/components/sections/ContactForm';
 
-export default function ContactPage() {
+type ContactPageProps = {
+  searchParams: {
+    service?: string;
+    budget?: string;
+  };
+};
+
+export default function ContactPage({ searchParams }: ContactPageProps) {
+  const { service, budget } = searchParams;
+
   return (
     <main className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4 md:px-6">
@@ -14,7 +23,7 @@ export default function ContactPage() {
               We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.
             </p>
           </div>
-          <ContactForm />
+          <ContactForm preselectedService={service} preselectedBudget={budget} />
         </div>
       </div>
     </main>

@@ -27,17 +27,43 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-export function ContactForm() {
+const budgetOptions = [
+  "< $1,000",
+  "$1,000 - $2,500",
+  "$2,500 - $5,000",
+  "$5,000 - $10,000",
+  "$10,000+",
+];
+
+const getBudgetRange = (priceString?: string): string => {
+  if (!priceString) return "";
+  const price = parseInt(priceString.replace(/[^0-9]/g, ''), 10);
+  if (isNaN(price)) return "";
+
+  if (price < 1000) return budgetOptions[0];
+  if (price >= 1000 && price < 2500) return budgetOptions[1];
+  if (price >= 2500 && price < 5000) return budgetOptions[2];
+  if (price >= 5000 && price < 10000) return budgetOptions[3];
+  if (price >= 10000) return budgetOptions[4];
+
+  return "";
+}
+
+
+export function ContactForm({ preselectedService, preselectedBudget }: { preselectedService?: string, preselectedBudget?: string }) {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+
+  const defaultServices = preselectedService ? [preselectedService] : [];
+  const defaultBudget = getBudgetRange(preselectedBudget);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       email: "",
-      services: [],
-      budget: "",
+      services: defaultServices,
+      budget: defaultBudget,
       message: "",
     },
   });
@@ -71,14 +97,6 @@ I'm interested in your services. Here are my details:
 
     form.reset();
   };
-
-  const budgetOptions = [
-    "< $1,000",
-    "$1,000 - $2,500",
-    "$2,500 - $5,000",
-    "$5,000 - $10,000",
-    "$10,000+",
-  ];
 
   return (
     <Form {...form}>
@@ -164,7 +182,7 @@ I'm interested in your services. Here are my details:
           render={({ field }) => (
             <FormItem>
               <FormLabel className="font-headline">Budget</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} value={field.value} defaultValue={defaultBudget}>
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue placeholder="Select your budget range" />
