@@ -10,20 +10,48 @@ export const ShuffleHero = () => {
   return (
     <section className="w-full px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
       <div>
-        <span className="block mb-4 text-xs md:text-sm text-accent font-medium">
-          Dynamic & Engaging
-        </span>
-        <h3 className="text-4xl md:text-6xl font-semibold text-foreground">
-          Always Fresh, Always Captivating
-        </h3>
-        <p className="text-base md:text-lg text-muted-foreground my-4 md:my-6">
-          Our portfolio is a living testament to our creative process. We constantly evolve, adapt, and innovate to deliver cutting-edge solutions that capture attention and drive results.
-        </p>
-        <Button asChild size="lg">
-          <Link href="/#work">
-            See Our Work
-          </Link>
-        </Button>
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          <span className="block mb-4 text-xs md:text-sm text-accent font-medium">
+            Dynamic & Engaging
+          </span>
+        </motion.div>
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-4xl md:text-6xl font-semibold text-foreground">
+            Always Fresh, Always Captivating
+          </h3>
+        </motion.div>
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-base md:text-lg text-muted-foreground my-4 md:my-6">
+            Our portfolio is a living testament to our creative process. We constantly evolve, adapt, and innovate to deliver cutting-edge solutions that capture attention and drive results.
+          </p>
+        </motion.div>
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <Button asChild size="lg">
+            <Link href="/#work">
+              See Our Work
+            </Link>
+          </Button>
+        </motion.div>
       </div>
       <ShuffleGrid />
     </section>
@@ -135,11 +163,16 @@ const ShuffleGrid = () => {
   const [squares, setSquares] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
+    // Client-side only effect
     const shuffleSquares = () => {
       setSquares(generateSquares());
       timeoutRef.current = setTimeout(shuffleSquares, 3000);
     };
-    shuffleSquares();
+    
+    // Set initial squares
+    setSquares(generateSquares());
+
+    timeoutRef.current = setTimeout(shuffleSquares, 3000);
 
     return () => {
       if (timeoutRef.current) {
