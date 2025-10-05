@@ -65,7 +65,7 @@ export const servicesData = [
     title: "Website Design",
     slug: "website-design",
     description: "We design and build beautiful, responsive, and user-centric websites that not only look stunning but are also optimized for performance and conversions.",
-    image: "https://images.unsplash.com/photo-1559028006-448665bd7c20?q=80&w=2670&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=2564&auto=format&fit=crop",
     link: "/services/website-design",
     pricing: {
         features: [
@@ -85,7 +85,7 @@ export const servicesData = [
     title: "Video Production",
     slug: "video-production",
     description: "From concept to final cut, our team produces high-quality video content that tells your story, engages your audience, and drives results.",
-    image: "https://images.unsplash.com/photo-1551818255-e6e10975846a?q=80&w=2487&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=2564&auto=format&fit=crop",
     link: "/services/video-production",
     pricing: {
         features: [
