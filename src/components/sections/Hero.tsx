@@ -35,7 +35,7 @@ export default function Hero() {
         />
       </div>
       <h2 className="text-2xl md:text-3xl font-semibold text-primary mt-8">
-        Digital Marketing, Website Design & Web Development in Agadir, Morocco
+        Morocco’s Experts in Website Solutions & Video Production for Businesses
       </h2>
     </>
   );
