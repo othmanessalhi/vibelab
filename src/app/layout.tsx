@@ -105,6 +105,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`} suppressHydrationWarning>
        <head>
+        <meta name="google-site-verification" content="r2hBnB-SpGb4Stmn6N2j2gSKh5nOzd8gQ4p0oDSMhks" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
