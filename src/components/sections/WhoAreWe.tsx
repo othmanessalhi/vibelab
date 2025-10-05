@@ -1,3 +1,4 @@
+
 "use client";
 
 import { LinkPreview } from "@/components/ui/link-preview";
@@ -9,7 +10,7 @@ function WhoAreWeInternal() {
        <div className="text-2xl font-bold tracking-tight text-center md:text-4xl">
           <div>We are a creative agency that loves building</div>
           <PointerHighlight>
-            <span className="text-accent">amazing things</span>
+            <span className="text-accent text-3xl md:text-5xl">amazing things</span>
           </PointerHighlight>
         </div>
       <div className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto text-center">
