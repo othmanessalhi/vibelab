@@ -11,7 +11,9 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <WhoAreWe />
+      <AnimateIn>
+        <WhoAreWe />
+      </AnimateIn>
       <Services />
       <AnimateIn>
         <CaseStudies />
@@ -20,7 +22,9 @@ export default function Home() {
         <Testimonials />
       </AnimateIn>
       <MovingText />
-      <CTA />
+      <AnimateIn>
+        <CTA />
+      </AnimateIn>
     </>
   );
 }
