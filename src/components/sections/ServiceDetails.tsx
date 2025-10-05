@@ -26,6 +26,16 @@ interface ServiceDetailsProps {
   service: Service;
 }
 
+const handleCTAClick = () => {
+    if (typeof window.dataLayer !== 'undefined') {
+      window.dataLayer.push({
+        event: 'cta_click',
+        cta_text: 'Get a Free Quote',
+        cta_location: 'Service Details Sidebar',
+      });
+    }
+  };
+
 export default function ServiceDetails({ service }: ServiceDetailsProps) {
   const { pricing } = service;
 
@@ -124,7 +134,7 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
                 <p className="text-primary/70 mb-6">
                   Let's discuss how our {service.title} service can help you achieve your goals.
                 </p>
-                <Button size="lg" className="w-full" asChild>
+                <Button size="lg" className="w-full" asChild onClick={handleCTAClick}>
                   <Link href="/contact">Get a Free Quote</Link>
                 </Button>
               </div>

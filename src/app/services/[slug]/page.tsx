@@ -2,6 +2,39 @@
 import { servicesData } from '@/lib/services-data';
 import ServiceDetails from '@/components/sections/ServiceDetails';
 import { notFound } from 'next/navigation';
+import { type Metadata } from 'next';
+
+type Props = {
+  params: { slug: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const service = servicesData.find((s) => s.slug === params.slug);
+
+  if (!service) {
+    return {
+      title: 'Service Not Found',
+      description: 'The requested service could not be found.',
+    };
+  }
+
+  return {
+    title: `${service.title} Service`,
+    description: service.description,
+    openGraph: {
+      title: `${service.title} | Social Vibe`,
+      description: service.description,
+      images: [
+        {
+          url: service.image, // Use the service-specific image for social sharing
+          width: 1200,
+          height: 630,
+          alt: service.title,
+        },
+      ],
+    },
+  };
+}
 
 export async function generateStaticParams() {
   return servicesData.map((service) => ({

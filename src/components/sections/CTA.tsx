@@ -4,6 +4,16 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
+const handleCTAClick = () => {
+  if (typeof window.dataLayer !== 'undefined') {
+    window.dataLayer.push({
+      event: 'cta_click',
+      cta_text: "Let's Talk",
+      cta_location: 'CTA Section',
+    });
+  }
+};
+
 export default function CTA() {
   return (
     <section id="cta" className="py-20 md:py-32 bg-background isolate z-10 relative">
@@ -15,7 +25,7 @@ export default function CTA() {
           Let's create something amazing together. Get in touch to discuss your project.
         </p>
         <div className="mt-8">
-          <Button size="lg" asChild>
+          <Button size="lg" asChild onClick={handleCTAClick}>
             <Link href="/contact">Let's Talk</Link>
           </Button>
         </div>

@@ -1,5 +1,12 @@
 
 import { ContactForm } from '@/components/sections/ContactForm';
+import { type Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact Us',
+  description: 'Get in touch with Social Vibe for a free strategy call. Let\'s discuss your project and how we can help you grow.',
+};
+
 
 export default function ContactPage() {
 

@@ -38,6 +38,14 @@ export function ContactForm() {
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     setIsLoading(true);
 
+    if (typeof window.dataLayer !== 'undefined') {
+      window.dataLayer.push({
+        event: 'form_submission',
+        form_name: 'Contact Form',
+        form_destination: 'WhatsApp',
+      });
+    }
+
     const whatsappNumber = "212602654219";
     
     const messageText = `Hello Social Vibe,
