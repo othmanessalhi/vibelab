@@ -1,3 +1,4 @@
+
 "use client";
 import React from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
@@ -37,7 +38,7 @@ export default function Hero() {
           morphTime={2}
           cooldownTime={0.4}
           className="font-bold"
-          textClassName="text-4xl md:text-[6rem] mt-12 md:mt-1 leading-none"
+          textClassName="text-5xl md:text-[6rem] mt-12 md:mt-1 leading-none"
         />
       </motion.div>
       <motion.h2 
