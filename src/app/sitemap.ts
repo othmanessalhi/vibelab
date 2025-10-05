@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { servicesData } from '@/lib/services-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const siteUrl = 'https://socialvibe.studio';
 
   // Generate URLs for each service
   const serviceUrls = servicesData.map((service) => ({

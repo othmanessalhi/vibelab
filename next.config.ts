@@ -59,7 +59,7 @@ const nextConfig: NextConfig = {
     ],
   },
   env: {
-    NEXT_PUBLIC_SITE_URL: 'http://localhost:3000',
+    NEXT_PUBLIC_SITE_URL: 'https://socialvibe.studio',
     NEXT_PUBLIC_GTM_ID: 'GTM-XXXXXXX',
     NEXT_PUBLIC_GA_ID: 'G-XXXXXXXXXX',
   },
