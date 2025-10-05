@@ -65,7 +65,7 @@ export const servicesData = [
     title: "Website Design",
     slug: "website-design",
     description: "We design and build beautiful, responsive, and user-centric websites that not only look stunning but are also optimized for performance and conversions.",
-    image: "https://images.unsplash.com/photo-1559028006-448665bd7c24?q=80&w=2670&auto=format&fit=crop",
+    image: "/images/Generated Image October 05, 2025 - 6_46PM.png",
     link: "/services/website-design",
     pricing: {
         features: [
