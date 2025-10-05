@@ -9,9 +9,10 @@ export default function Footer() {
           <Link href="/" className="text-2xl font-bold font-headline text-primary">
             Social Vibe
           </Link>
-          <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Social Vibe. All rights reserved.
-          </p>
+          <div className="text-sm text-muted-foreground text-center">
+            <p>&copy; {new Date().getFullYear()} Social Vibe. All rights reserved.</p>
+            <p>Agadir, Morocco</p>
+          </div>
           <div className="flex gap-4">
             <Link href="#" aria-label="Twitter">
               <Twitter className="h-6 w-6 text-muted-foreground transition-colors hover:text-accent" />

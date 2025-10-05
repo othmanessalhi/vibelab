@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -6,6 +7,7 @@ import Footer from '@/components/common/Footer';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/common/ThemeProvider';
 import Analytics from '@/components/common/Analytics';
+import { servicesData } from '@/lib/services-data';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -23,8 +25,8 @@ export const metadata: Metadata = {
   description: 'Social Vibe is a creative agency in Agadir, Morocco, specializing in web design, web development, social media management, and video production. We grow brands with cutting-edge content and strategy.',
   keywords: ['Website design Morocco', 'Web development Agadir', 'Social media management Morocco', 'Video production Agadir', 'Drone videography Morocco', 'Digital marketing agency Agadir'],
   openGraph: {
-    title: 'Social Vibe | Digital Marketing & Web Design Agency',
-    description: 'We grow brands with cutting-edge content and strategy.',
+    title: 'Social Vibe | Digital Marketing & Web Design Agency in Agadir',
+    description: 'We grow brands in Morocco with cutting-edge content and strategy.',
     url: siteUrl,
     siteName: 'Social Vibe',
     images: [
@@ -32,7 +34,7 @@ export const metadata: Metadata = {
         url: '/og-image.webp', // Assuming og-image.webp is in /public
         width: 1200,
         height: 630,
-        alt: 'Social Vibe Agency Banner',
+        alt: 'Social Vibe Agency Banner - Agadir, Morocco',
       },
     ],
     locale: 'en_US',
@@ -40,11 +42,60 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Social Vibe | Digital Marketing & Web Design Agency',
-    description: 'We grow brands with cutting-edge content and strategy.',
+    title: 'Social Vibe | Digital Marketing & Web Design Agency in Agadir',
+    description: 'We grow brands in Morocco with cutting-edge content and strategy.',
     images: ['/og-image.webp'],
   },
 };
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Social Vibe",
+  "image": `${siteUrl}/og-image.webp`,
+  "@id": siteUrl,
+  "url": siteUrl,
+  "telephone": "+212-602-654321", // Example phone
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Creative Lane",
+    "addressLocality": "Agadir",
+    "postalCode": "80000",
+    "addressCountry": "MA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 30.427755, // Example coordinates for Agadir
+    "longitude": -9.598107
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "09:00",
+    "closes": "18:00"
+  },
+  "sameAs": [
+    "https://twitter.com/yourprofile",
+    "https://instagram.com/yourprofile",
+    "https://linkedin.com/company/yourprofile"
+  ],
+  "priceRange": "$$",
+  "description": "A premier digital marketing and web design agency based in Agadir, Morocco.",
+  "servesCuisine": "", // Not applicable
+  "service": servicesData.map(service => ({
+    "@type": "Service",
+    "name": service.title,
+    "description": service.description,
+    "url": `${siteUrl}${service.link}`
+  }))
+};
+
 
 export default function RootLayout({
   children,
@@ -53,6 +104,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`} suppressHydrationWarning>
+       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+      </head>
       <body className="font-body antialiased bg-background">
         <ThemeProvider
           attribute="class"

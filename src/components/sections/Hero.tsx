@@ -19,7 +19,7 @@ export default function Hero() {
 
   const heroImage = {
     imageUrl: "/images/230327_r42093web-story.webp",
-    description: "Animated dashboard showcasing Social Vibe's digital marketing results and web design projects.",
+    description: "Animated dashboard showcasing Social Vibe's digital marketing results and web design projects in Agadir.",
     imageHint: "abstract design"
   };
 
@@ -45,7 +45,7 @@ export default function Hero() {
         transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
         className="text-sm md:text-2xl font-semibold text-primary"
       >
-        Website Solutions & Video Production Experts in Morocco
+        Your Experts for Website Solutions & Video Production in Agadir, Morocco
       </motion.h2>
     </>
   );

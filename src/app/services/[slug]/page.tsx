@@ -19,17 +19,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${service.title} Service`,
-    description: service.description,
+    title: `${service.title} Service in Agadir`,
+    description: `${service.description} We offer expert ${service.title} services in Agadir, Morocco.`,
     openGraph: {
-      title: `${service.title} | Social Vibe`,
+      title: `${service.title} | Social Vibe Agadir`,
       description: service.description,
       images: [
         {
           url: service.image, // Use the service-specific image for social sharing
           width: 1200,
           height: 630,
-          alt: service.title,
+          alt: `${service.title} in Agadir`,
         },
       ],
     },
