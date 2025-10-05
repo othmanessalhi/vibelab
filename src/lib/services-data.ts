@@ -5,7 +5,7 @@ export const servicesData = [
     title: "Social Media Management",
     slug: "social-media-management",
     description: "We craft and execute bespoke social media strategies that build authentic connections, foster engagement, and grow your brand's community.",
-    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/images/Generated Image October 05, 2025 - 5_21PM.png",
     link: "/services/social-media-management",
     pricing: {
       features: [
