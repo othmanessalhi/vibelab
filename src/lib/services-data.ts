@@ -5,7 +5,7 @@ export const servicesData = [
     title: "Social Media Management",
     slug: "social-media-management",
     description: "We craft and execute bespoke social media strategies that build authentic connections, foster engagement, and grow your brand's community.",
-    image: "https://images.unsplash.com/photo-1694500359146-5a91341b3a39?q=80&w=2574&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     link: "/services/social-media-management",
     pricing: {
       features: [
@@ -65,7 +65,7 @@ export const servicesData = [
     title: "Website Design",
     slug: "website-design",
     description: "We design and build beautiful, responsive, and user-centric websites that not only look stunning but are also optimized for performance and conversions.",
-    image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2670&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1559028006-448665bd7c24?q=80&w=2670&auto=format&fit=crop",
     link: "/services/website-design",
     pricing: {
         features: [
@@ -85,7 +85,7 @@ export const servicesData = [
     title: "Video Production",
     slug: "video-production",
     description: "From concept to final cut, our team produces high-quality video content that tells your story, engages your audience, and drives results.",
-    image: "https://images.unsplash.com/photo-1574717024633-6cf301de385d?q=80&w=2574&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=1974&auto=format&fit=crop",
     link: "/services/video-production",
     pricing: {
         features: [
