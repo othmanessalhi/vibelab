@@ -36,25 +36,29 @@ export const LinkPreview = ({
   isStatic = false,
   imageSrc = "",
 }: LinkPreviewProps) => {
-  let src;
-  if (!isStatic) {
-    const params = encode({
-      url,
-      screenshot: true,
-      meta: false,
-      embed: "screenshot.url",
-      colorScheme: "dark",
-      "viewport.isMobile": true,
-      "viewport.deviceScaleFactor": 1,
-      "viewport.width": width * 3,
-      "viewport.height": height * 3,
-    });
-    src = `https://api.microlink.io/?${params}`;
-  } else {
-    src = imageSrc;
-  }
-
+  const [src, setSrc] = React.useState(isStatic ? imageSrc : "");
   const [isOpen, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!isStatic) {
+      const absoluteUrl = url.startsWith('/') 
+        ? `${window.location.origin}${url}` 
+        : url;
+      const params = encode({
+        url: absoluteUrl,
+        screenshot: true,
+        meta: false,
+        embed: "screenshot.url",
+        colorScheme: "dark",
+        "viewport.isMobile": true,
+        "viewport.deviceScaleFactor": 1,
+        "viewport.width": width * 3,
+        "viewport.height": height * 3,
+      });
+      setSrc(`https://api.microlink.io/?${params}`);
+    }
+  }, [url, isStatic, width, height]);
+
 
   const [isMounted, setIsMounted] = React.useState(false);
 
@@ -76,7 +80,7 @@ export const LinkPreview = ({
 
   return (
     <>
-      {isMounted ? (
+      {isMounted && src ? (
         <div className="hidden">
           <Image
             src={src}
@@ -111,7 +115,7 @@ export const LinkPreview = ({
           sideOffset={10}
         >
           <AnimatePresence>
-            {isOpen && (
+            {isOpen && src && (
               <motion.div
                 initial={{ opacity: 0, y: 20, scale: 0.6 }}
                 animate={{
@@ -136,7 +140,7 @@ export const LinkPreview = ({
                   style={{ fontSize: 0 }}
                 >
                   <Image
-                    src={isStatic ? imageSrc : src}
+                    src={src}
                     width={width}
                     height={height}
                     quality={quality}
