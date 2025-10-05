@@ -9,12 +9,11 @@ import { motion } from "framer-motion";
 export default function Hero() {
   const headlines = [
     "Your Brand is Invisible.",
-    "Competitors Steal Your Clicks.",
-    "Your Story Goes Unheard.",
-    "Struggling to Keep Up?",
-    "Let's Change That.",
-    "The Attention You Deserve.",
-    "Unlock Your True Potential.",
+    "Lost in the Digital Noise.",
+    "Opportunities Pass You By.",
+    "But Great Stories Resonate.",
+    "We Craft Authentic Connections.",
+    "Turning Clicks into Clients.",
     "Social Vibe Sees What's Next."
   ];
 
@@ -30,7 +29,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
-        className="h-24 mt-12"
+        className="h-24 mt-12 mb-12"
       >
         <GooeyText
           texts={headlines}
